@@ -1,6 +1,9 @@
 import { Box, useColorMode,Text,Image, Flex } from "@chakra-ui/react"
 import { useState } from "react";
-export default function Home() {
+import LoginForm from '../components/LoginForm'
+import CadastroForm from '../components/CadastroForm'
+
+export default function Signin() {
     const { colorMode } = useColorMode();
     const brandColor = {light: 'brand.900',dark: 'brand.700'};
     const [ isLogin, setIsLogin ] = useState(true);
@@ -17,28 +20,34 @@ export default function Home() {
         padding="0"
         bgSize="cover"
         bgImage={'/background.png'}>   
-            <Box borderRadius={'10px'} bg={'white'} p={2}>
-                <Flex>
-                    <Text p={2}>
+            <Box borderRadius={'10px'} bg={'white'} height="360px"  width={'360px'}>
+                <Flex cursor={'pointer'} width={"100%"}>
+                    <Text  onClick={()=>setIsLogin(true)}
+                     bg={isLogin?"":"#D9D8D2"} textAlign={'center'} width={"50%"}  p={2}
+                        style={{
+                            borderRadius: "10px 0 0 0"
+                        }}
+                    >
                         Login
                     </Text>
-                    <Text p={2}> 
+                    <Text onClick={()=>setIsLogin(false)}
+                     bg={isLogin?"#D9D8D2":""} textAlign={'center'} width={"50%"} p={2}
+                        style={{
+                            borderRadius: "0 10px 0 0"
+                        }}
+                    > 
                         Cadastrar
                     </Text>
-                    
-                </Flex>
-                { isLogin?
-                    <Box>
-                        LoginForm
-                    </Box>
-                    :
-                    <Box>
-                        CadastroForm
-                    </Box>
-                }
-                
-                
 
+
+                </Flex>
+                <Box p={4}>
+                    { isLogin?
+                        <LoginForm/>
+                        :
+                        <CadastroForm/>
+                    }
+                </Box>
             </Box>
 
 
