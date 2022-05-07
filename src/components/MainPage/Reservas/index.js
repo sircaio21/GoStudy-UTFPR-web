@@ -1,5 +1,5 @@
 
-import { Box, Text, Grid, GridItem,Flex } from "@chakra-ui/react"
+import { Box, Text, Grid, GridItem, Flex, Center } from "@chakra-ui/react"
 
 const reservas = [
     {
@@ -32,7 +32,7 @@ export default function Reservas() {
     return(
         <Box borderRadius={'5px'} borderWidth={'1px'}
            borderColor={'#b2b2b2'} p={6} bgColor={'#FFFFFF'}
-           maxWidth={'1200px'}>
+           maxWidth={'1200px'} width={"100%"}>
             <Text fontWeight={'bold'} fontSize='26px'>
                 Suas reservas: 
             </Text>
@@ -41,7 +41,7 @@ export default function Reservas() {
                 <GridItem>
                    <Box fontWeight={'bold'} borderRadius={'5px'} borderWidth={'1px'}
                     borderColor={'#b2b2b2'} p={4} bgColor={'#ECF4FB'}
-                    maxWidth={'1200px'}>
+                    maxWidth={'500px'}>
                     <Text fontSize='16px'>
                       {reserva.diaSemana} ~ {reserva.data}
                     </Text>

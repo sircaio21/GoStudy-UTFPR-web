@@ -4,7 +4,7 @@ export default function Informacoes() {
     return (
         <Box borderRadius={'5px'} borderWidth={'1px'}
             borderColor={'#b2b2b2'} p={6} bgColor={'#FFFFFF'}
-            maxWidth={'1200px'} marginTop='30px'>
+            maxWidth={'1200px'} marginTop='30px' width={"100%"}>
                 <Text fontWeight={'bold'} fontSize='26px'>Informações Gerais: </Text>
                 <Text fontWeight={'bold'} fontSize='20px'>Você atingiu o limite semanal e não pode mais reservar salas </Text>
                 <Flex marginTop={'30px'} width='100%' justifyContent={"center"}>
