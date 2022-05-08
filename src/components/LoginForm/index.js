@@ -1,4 +1,5 @@
 import { Box, Input, Text, Button } from "@chakra-ui/react"
+import { router } from 'next'
 import { useState } from "react";
 export default function LoginForm() {
    
@@ -13,7 +14,7 @@ export default function LoginForm() {
                 <Input  fontSize='16px' />
             </Box>
             <Box  textAlign={'center'}>
-                <Button width="100%" color={'white'} background={"#1E6CBF"} _hover={
+                <Button width="100%" color={'white'} onClick={()=>router.push("/")} background={"#1E6CBF"} _hover={
                     {
                         background: "#1E6CBF",
                     }
