@@ -11,7 +11,7 @@ export default function Main() {
         <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
           <Reservas/>
         </Box>
-        <Box  display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
+        <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
         <Informacoes/>
         </Box>
       </Box>    
