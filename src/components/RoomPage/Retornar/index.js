@@ -15,7 +15,7 @@ export default function Retornar() {
                 size='lg'
                 icon={<ArrowBackIcon/>}
             /> 
-            <Text fontWeight={'bold'} fontSize='26px'>
+            <Text fontWeight={'medium'} fontSize='26px'>
                  Retornar 
             </Text>
             

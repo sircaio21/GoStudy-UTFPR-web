@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function CadastroForm() {
    
     return (
-        <Flex alignItems={'center'} justifyContent={'space-between'}  height={'100px'} bgColor={'#6BB6FA'} >
+        <Flex alignItems={'center'} justifyContent={'space-evenly'}  height={'100px'} bgColor={'#6BB6FA'} >
           
           <Flex height={'60px'} margin={'50px'}>
             <img  src='/foto-perfil.png'/>
@@ -18,6 +18,7 @@ export default function CadastroForm() {
               </Text>
             </Flex>
           </Flex>
+          <Flex></Flex>
           <Flex margin={'50px'}>
             <img src='/logo-utfpr.png'/>
           </Flex>
