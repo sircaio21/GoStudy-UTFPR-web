@@ -1,7 +1,7 @@
 import { Box, useColorMode,Text,Image, Flex } from "@chakra-ui/react"
 import { useState } from "react";
-import LoginForm from '../components/LoginForm'
-import CadastroForm from '../components/CadastroForm'
+import LoginForm from '../components/SigninPage/LoginForm'
+import CadastroForm from '../components/SigninPage/CadastroForm'
 
 export default function Signin() {
     const { colorMode } = useColorMode();
