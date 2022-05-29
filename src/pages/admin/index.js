@@ -7,24 +7,20 @@ export default function Admin() {
     return (
         <Box width={"100%"} height={"100vh"}>
             <Header/>
-            <Grid
-            bg={'#696'} 
-            h='90vh'
-                templateColumns='repeat(2, 1fr)'
-                templateRows={'repeat(3, 1fr)'}
-                gap={4}
+            <Flex justifyContent={'center'}
+            width={'100%'} 
+            height={'max-content'}
             >
-                <GridItem colSpan={1} rowSpan={3} >
+                <Box width={'50%'} >
                     <Register/>
-                </GridItem>
-                <GridItem colSpan={1} rowSpan={3} >
+                </Box>
+                <Box width={'50%'}>
                     <Visualization/> 
-                </GridItem>
-                <GridItem bg={'black'} colSpan={2} rowSpan={1}>
-                    <ExitBtnPanel/>
-                </GridItem>
-            </Grid>
-            
+                </Box>
+            </Flex>
+            <Flex bg={'#696'} justifyContent={'center'} width={'100%'}>
+                <ExitBtnPanel/>
+            </Flex>
         </Box>    
     )
   }
