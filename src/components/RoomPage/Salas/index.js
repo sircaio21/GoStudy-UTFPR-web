@@ -10,12 +10,12 @@ export default function Retornar() {
     return(
         <Box borderRadius={'5px'} borderWidth={'1px'}
         borderColor={'#b2b2b2'} p={6} bgColor={'#FFFFFF'}
-        maxWidth={'1150px'} marginTop='0px' width={"100%"} maxHeight={'1000px'} height={'100%'} display={'flex'}>
+        maxWidth={'1150px'} marginTop='0px' width={"100%"} maxHeight={'350px'} height={'100%'} display={'flex'}>
             <Salas/>
             <Spacer />       
             <Box alignItems={'center'} alignContent={'center'} >
                 <DropDown/>
-                <Flex marginLeft={'280px'}>
+                <Flex marginLeft={'200px'}>
                     <Box p={5} display={'flex'} alignItems={'center'}>
                         <BsCheckCircle color="green" />
                         <Text marginLeft={3}>Disponivel</Text>

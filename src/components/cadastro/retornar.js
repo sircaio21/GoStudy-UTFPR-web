@@ -16,9 +16,8 @@ export default function Retornar() {
                 icon={<ArrowBackIcon/>}
             /> 
             <Text fontWeight={'medium'} fontSize='26px' marginTop={'-5px'}>
-                 Nova Reserva
+                Cadastro de instituição
             </Text>
-            
             
           </Flex>
     )

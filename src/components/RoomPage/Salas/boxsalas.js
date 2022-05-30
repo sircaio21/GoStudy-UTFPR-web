@@ -45,7 +45,7 @@ export default function Salas() {
     return(
         
             <Box>
-              <Grid p={"2"} shadow={"none"} templateColumns='1, 1fr' gap={6} overflow={'scroll'}  maxHeight={'400px'} maxWidth={'200px'} overflowX={"hidden"} width={'100%'} css={{
+              <Grid p={"2"} shadow={"none"} templateColumns='1, 1fr' gap={6} overflow={'scroll'}  maxHeight={'300px'} maxWidth={'200px'} overflowX={"hidden"} width={'100%'} css={{
               '&::-webkit-scrollbar': {
                 width: '4px',
               },
@@ -57,7 +57,7 @@ export default function Salas() {
                   <GridItem margin={'-2'}>
                     <Button   borderRadius={'5px'} borderWidth={'1px'} 
                       borderColor={'#b2b2b2'} bgColor={'#EEEDEA'}
-                      width={'130px'} height={'60px'} css={{'&:focus':{ background: "#6BB6FA", boxShadow: 'none'}, }}>
+                      width={'130px'} height={'52px'} css={{'&:focus':{ background: "#6BB6FA", boxShadow: 'none'}, }}>
                         <Text  fontSize='20px' textColor={'#313131'}>
                           {salas.sala}
                         </Text>

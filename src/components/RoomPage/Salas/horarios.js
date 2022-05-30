@@ -49,7 +49,7 @@ const Horarios = [
     },
     {
       horario: "14:40",
-      isReservado: false
+      isReservado: true
      
     },
     {
@@ -89,7 +89,7 @@ const Horarios = [
     return(
         <Button  borderRadius={'5px'} 
           p={4} bgColor={'#FFEDED'}
-         maxWidth={'200px'} width={'130px'} height={'50px'} >
+         maxWidth={'100px'} width={'130px'} height={'30px'} >
         <Flex>
         <BsXCircle color="red" />
         <Text marginLeft={2} marginTop={-0.5} fontSize='16px'>
@@ -105,8 +105,8 @@ const Horarios = [
 
     return(
       <Button  borderRadius={'5px'} 
-       p={4} bgColor={'#F0FFF5'}
-      maxWidth={'130px'} width={'100%'} height={'50px'} css={{'&:focus':{boxShadow: 'none'}, }} >
+       p={3} bgColor={'#F0FFF5'}
+      maxWidth={'100px'} width={'100%'} height={'30px'} css={{'&:focus':{boxShadow: 'none'}, }} >
       <Flex>
         <MdCheckCircleOutline  color="green" />
         <Text marginLeft={2} marginTop={-0.5} fontSize='16px'>
