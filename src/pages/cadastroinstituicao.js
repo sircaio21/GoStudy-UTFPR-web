@@ -1,5 +1,5 @@
 import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
-import Header from '../components/MainPage/Header'
+import Header from '../components/Header'
 import Retornar from "../components/cadastro/retornar"
 import Botoes from "../components/cadastro/botoes"
 import Inputs from "../components/cadastro/index"
