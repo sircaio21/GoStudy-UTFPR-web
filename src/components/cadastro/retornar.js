@@ -1,7 +1,7 @@
 import { Box, Text, Grid, GridItem, Flex, Center, Button, Spacer } from "@chakra-ui/react"
 import { IconButton } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
-export default function Retornar() {
+export default function Retornar({titulo}) {
 
     return(
         <Flex borderRadius={'5px'} borderWidth={'1px'}
@@ -16,7 +16,7 @@ export default function Retornar() {
                 icon={<ArrowBackIcon/>}
             /> 
             <Text fontWeight={'medium'} fontSize='26px' marginTop={'-5px'}>
-                Cadastro de instituição
+                Cadastro de {titulo}
             </Text>
             
           </Flex>

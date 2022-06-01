@@ -12,34 +12,22 @@ export default function Retornar() {
             <Box display={'flex'} justifyContent={'center'} >   
                 
                     <Box margin={5} >
-                    <Text>Nome da instituição</Text>
+                    <Text>Nome do horário</Text>
                     <Input size='md'  borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5} >
-                    <Text>Cidade</Text>
+                    <Text>horário inicial</Text>
                     <Input size='md' borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5} >
-                    <Text>Telefone</Text>
+                    <Text>horário final</Text>
                     <Input size='md' borderColor={"gray.400"} />         
                     </Box>  
                
-            </Box> 
-            <Box display={'flex'} justifyContent={'center'} >   
-                    <Box margin={5} >
-                    <Text>Horário de abertura</Text>
-                    <Input size='md' borderColor={"gray.400"}  />         
-                    </Box>  
-                
-                
-                    <Box margin={5} >
-                    <Text>Horário de fechamento</Text>
-                    <Input size='md' borderColor={"gray.400"}  />         
-                    </Box>   
             </Box> 
         </Box>
     )
