@@ -13,32 +13,32 @@ export default function Retornar() {
                 
                     <Box margin={5} >
                     <Text>Nome da instituição</Text>
-                    <Input size='md'  borderColor={"gray.400"} />         
+                    <Input size='md' type={"text"} borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5} >
                     <Text>Cidade</Text>
-                    <Input size='md' borderColor={"gray.400"} />         
+                    <Input size='md' type={"text"} borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5} >
                     <Text>Telefone</Text>
-                    <Input size='md' borderColor={"gray.400"} />         
+                    <Input size='md' type={"tel"} borderColor={"gray.400"} />         
                     </Box>  
                
             </Box> 
             <Box display={'flex'} justifyContent={'center'} >   
                     <Box margin={5} >
                     <Text>Horário de abertura</Text>
-                    <Input size='md' borderColor={"gray.400"}  />         
+                    <Input size='md' type={"time"} borderColor={"gray.400"}  />         
                     </Box>  
                 
                 
                     <Box margin={5} >
                     <Text>Horário de fechamento</Text>
-                    <Input size='md' borderColor={"gray.400"}  />         
+                    <Input size='md' type={"time"} borderColor={"gray.400"}  />         
                     </Box>   
             </Box> 
         </Box>
