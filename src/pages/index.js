@@ -1,5 +1,5 @@
 import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
-import Header from '../components/MainPage/Header'
+import Header from '../components/Header'
 import Reservas from "../components/MainPage/Reservas"
 import Informacoes from "../components/MainPage/Informacoes"
 export default function Main() {
@@ -11,7 +11,7 @@ export default function Main() {
         <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
           <Reservas/>
         </Box>
-        <Box  display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
+        <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
         <Informacoes/>
         </Box>
       </Box>    

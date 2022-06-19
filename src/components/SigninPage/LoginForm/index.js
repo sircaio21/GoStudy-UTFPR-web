@@ -11,7 +11,7 @@ export default function LoginForm() {
             </Box>
             <Box marginBottom={'15px'}>
                 <Text>Senha:</Text>
-                <Input  fontSize='16px' />
+                <Input type='password' fontSize='16px' />
             </Box>
             <Box  textAlign={'center'}>
                 <Button width="100%" color={'white'} onClick={()=>router.push("/")} background={"#1E6CBF"} _hover={
