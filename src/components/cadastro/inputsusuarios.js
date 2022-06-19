@@ -6,6 +6,18 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 import { raw } from "next/dist/build/webpack/loaders/next-middleware-wasm-loader"
 
 
+function handleChange(e) {
+    let isChecked = e.target.checked;
+    if (isChecked) {
+        document.getElementById("RA").disabled = true;
+        document.getElementById("RA").style.backgroundColor = "gray";
+    } else {
+        document.getElementById("RA").disabled = false;
+        document.getElementById("RA").style.backgroundColor = "white";
+    }
+
+  }
+
 
 export default function Retornar() {
     return(
@@ -23,36 +35,36 @@ export default function Retornar() {
                     </Box>  
                 
                 
-                    <Box margin={5} >
-                    <Text>Nome</Text>
-                    <Input size='md' type={"text"} borderColor={"gray.400"} />         
+                    <Box margin={5}>
+                        <Text>Nome</Text>
+                        <Input size='md' type={"text"} borderColor={"gray.400"} />         
                     </Box>  
                 
                 
-                    <Box margin={5} >
-                    <Text>Telefone</Text>
-                    <Input size='md' type={"tel"} borderColor={"gray.400"} />         
+                    <Box margin={5}>
+                        <Text>Telefone</Text>
+                        <Input size='md' type={"tel"} borderColor={"gray.400"} />         
                     </Box>  
                
             </Box> 
             <Box display={'flex'} justifyContent={'center'} >   
-                    <Box margin={5} >
-                    <Text>Email</Text>
-                    <Input size='md' type={"email"} borderColor={"gray.400"}  />         
+                    <Box margin={5}>
+                        <Text>E-mail</Text>
+                        <Input size='md' type={"email"} borderColor={"gray.400"}  />         
                     </Box>  
                 
                 
-                    <Box margin={5} >
-                    <Text>senha</Text>
-                    <Input size='md' type={"password"} borderColor={"gray.400"}  />         
+                    <Box margin={5}>
+                        <Text>Senha</Text>
+                        <Input size='md' type={"password"} borderColor={"gray.400"}  />         
                     </Box>   
-                    <Box margin={5} >
-                    <Text>RA</Text>
-                    <Input size='md' name='RA' id="RA" borderColor={"gray.400"}  />         
+                    <Box margin={5}>
+                        <Text>RA</Text>
+                        <Input size='md' name='RA' id="RA" borderColor={"gray.400"}  />         
                     </Box>  
             </Box> 
             <Box display={'flex'} justifyContent={'center'} marginTop={10}>   
-                <Checkbox size='lg' name="check" >Usuário administrador</Checkbox>           
+                <Checkbox size='lg' name="check" onChange={e => handleChange(e)}>Usuário administrador</Checkbox>           
             </Box> 
         </Box>
     )

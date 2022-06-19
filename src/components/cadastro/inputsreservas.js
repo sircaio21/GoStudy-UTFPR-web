@@ -13,7 +13,7 @@ export default function Retornar() {
         maxWidth={'1150px'}  width={"100%"} maxHeight={'400px'} height={'100%'}  justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
             <Box display={'flex'} justifyContent={'center'} >   
                     <Box margin={5} >
-                    <Text>RA ou email do Usuário</Text>
+                    <Text>RA ou E-mail do usuário</Text>
                     <Input size='md' borderColor={"gray.400"} />         
                     </Box> 
 
@@ -21,6 +21,7 @@ export default function Retornar() {
                     <Text>Sala</Text>
                         <Select placeholder='Selecione' borderColor={"gray.400"}>
                             <option value='option1'>101</option>
+                            <option value='option2'>102</option>
                             <option value='option2'>103</option>
                         </Select>      
                     </Box>  
