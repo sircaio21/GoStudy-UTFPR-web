@@ -6,7 +6,7 @@ export default function Retornar({titulo}) {
     return(
         <Flex borderRadius={'5px'} borderWidth={'1px'}
         borderColor={'#b2b2b2'} p={6} bgColor={'#FFFFFF'}
-        maxWidth={'1150px'}  width={"100%"} height={"60px"} alignItems={'center'} >
+        maxWidth={'1150px'}  width={"100%"} height={"60px"} alignItems={'center'} alignContent={'space-around'} >
             <IconButton 
                 marginRight={'10px'}
                 colorScheme='gray'

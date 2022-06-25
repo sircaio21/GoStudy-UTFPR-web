@@ -13,7 +13,7 @@ export default function Retornar() {
         <Box borderRadius={'5px'} borderWidth={'1px'}
         borderColor={'#b2b2b2'} p={10} bgColor={'#FFFFFF'}
         maxWidth={'1150px'}  width={"100%"} maxHeight={'350px'} height={'100%'} justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
-            <Box display={'flex'} alignItems={"center"} justifyContent = {"center"} >   
+            <Box display={'flex'} alignItems={"center"} justifyContent = {"space-around"} >   
                 
                     <Box margin={5} marginTop={-5}>
                         <Text>Id do Campus</Text>
