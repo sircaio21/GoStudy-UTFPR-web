@@ -82,8 +82,8 @@ export function UserProvider({children}){
         setIsLoadingAuth(false)
     }
     function signout(){
-        setIsLoadingAuth(true) 
-        try{
+        setIsLoadingAuth(true)
+        new Promise((resolve, reject) => {
             destroyCookie({}, 'gostudy-token')
             setUser({
                 id: null,
@@ -95,10 +95,14 @@ export function UserProvider({children}){
                 password: null,
                 isAdmin: null,
              })
-        }
-        finally{
-            router.push("/signin")
-        }
+             resolve(
+                router.push("/signin")
+             )
+        });
+            
+        
+            
+        
         
          setIsLoadingAuth(false)
 
