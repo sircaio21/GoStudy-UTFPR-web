@@ -34,7 +34,10 @@ export default ()=>{
                 bg={"#E6E6E6"} 
                 width={'80%'}
                 mt={2}
-                mb={2}>
+                mb={2}
+                cursor={'pointer'}
+                onClick={()=>router.push('/admin/cadastrohorarios')}
+                >
                     <Text>Horários</Text>
                 </Flex>
 
@@ -45,7 +48,10 @@ export default ()=>{
                 bg={"#E6E6E6"} 
                 width={'80%'}
                 mt={2}
-                mb={2}>
+                mb={2}
+                cursor={'pointer'}
+                onClick={()=>router.push('/admin/cadastrosalas')}
+                >
                     <Text>Salas</Text>
                 </Flex>
                 <Flex 
@@ -68,7 +74,10 @@ export default ()=>{
                 bg={"#E6E6E6"} 
                 width={'80%'}
                 mt={2}
-                mb={2}>
+                mb={2}
+                cursor={'pointer'}
+                onClick={()=>router.push('/admin/cadastroreservas')}
+                >
                     <Text>Reservas</Text>
                 </Flex>   
             </Flex>
