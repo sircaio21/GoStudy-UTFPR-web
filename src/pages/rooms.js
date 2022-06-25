@@ -2,6 +2,8 @@ import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
 import Header from '../components/Header'
 import Salas from "../components/RoomPage/Salas/index"
 import Retornar from "../components/RoomPage/Retornar"
+import {parseCookies} from 'nookies'
+
 export default function Home() {
     return (
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
@@ -15,5 +17,20 @@ export default function Home() {
         </Box>  
         
     )
+  }
+  
+  export const getServerSideProps = async (ctx) => {
+    const { 'gostudy-token': token } = parseCookies(ctx);
+    if (!token) {
+      return {
+        redirect: {
+          destination: '/signin',
+          permanent: false,
+        }
+      }
+    }
+    return {
+      props: {}
+    }
   }
   

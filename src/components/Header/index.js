@@ -1,9 +1,10 @@
 import { Box, Text,Flex, Button  } from "@chakra-ui/react"
 import { router } from 'next'
 import { useState } from "react";
-
+import useUser from "../../hooks/useUser";
 export default function CadastroForm() {
-   
+    const { user } = useUser()
+
     return (
         <Flex alignItems={'center'} justifyContent={'space-evenly'}  height={'100px'} bgColor={'#6BB6FA'} >
           
@@ -11,10 +12,10 @@ export default function CadastroForm() {
             <img  src='/foto-perfil.png'/>
             <Flex marginLeft={'10px'} flexDirection={'column'} justifyContent="center">
               <Text  fontSize={'18px'} color={'white'}>
-                Nome do Usuario
+                {user?.name}
               </Text>
               <Text fontSize={'14px'} color={'white'}>
-                RA: 1234567
+                RA: {user?.ra}
               </Text>
             </Flex>
           </Flex>

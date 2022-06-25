@@ -4,7 +4,9 @@ import { Spacer } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 import { raw } from "next/dist/build/webpack/loaders/next-middleware-wasm-loader"
-
+import { useEffect, useState } from "react"
+import useUser from "../../hooks/useUser"
+import getAllInstitutes from "../../services/institute/getAllInstitutes"
 
 function handleChange(e) {
     let isChecked = e.target.checked;
@@ -20,6 +22,25 @@ function handleChange(e) {
 
 
 export default function Retornar() {
+    const {user} = useUser();
+    const [institutes, setInstitutes] = useState([]);
+    useEffect(
+        ()=>{
+            (async ()=>{
+                console.log(user)
+                if(user?.token){
+                    const response = await getAllInstitutes(user.token);
+                    console.log(response)
+                    if(response.status == 'success'){
+                        console.log(response.data[0])
+                        setInstitutes(response.data)
+                    }
+                }
+                
+            })()
+        },[user]
+    )
+
     return(
         <Box borderRadius={'5px'} borderWidth={'1px'}
         borderColor={'#b2b2b2'} p={10} bgColor={'#FFFFFF'}
@@ -29,8 +50,9 @@ export default function Retornar() {
                     <Box margin={5} minWidth={220} >
                     <Text>Instituição</Text>
                         <Select placeholder='Selecione' borderColor={"gray.400"}>
-                            <option value='option1'>UTFPR-CM</option>
-                            <option value='option2'>UTFPR-CT</option>
+                            {institutes.map(
+                                (i)=><option value={i?.id}>{i?.name}</option>
+                            )}
                         </Select>  
                     </Box>  
                 
