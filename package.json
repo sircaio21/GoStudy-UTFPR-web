@@ -21,7 +21,8 @@
     "nookies": "^2.5.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-modal": "^3.15.1"
   },
   "devDependencies": {
     "eslint": "8.14.0",

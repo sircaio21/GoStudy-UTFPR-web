@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export default async function({token}){
-    console.log(token)
     const config = {
         method: 'get',
         url: `${process.env.URL_SERVER}/institute`,
@@ -17,7 +16,6 @@ export default async function({token}){
     .catch(function (error) {
         return {message:"Falha ao encontrar usuário", status:"error", data: error.response.data }
     });
-    console.log(response)
     return response
 
 
