@@ -13,6 +13,7 @@ export default function Home() {
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
             <Inputs/>
+            
           </Box>    
         </Box>  
     )
