@@ -7,7 +7,6 @@ import createInstitute from "../../services/institute/createInstitute"
 import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
 import Header from '../../components/Header'
 import Retornar from "../../components/cadastro/retornar"
-import Botoes from "../../components/cadastro/botoes"
 import Inputs from "../../components/cadastro/inputsinstituicao"
 import ConfirmModal from "../../components/ConfirmModal"
 export default function CadastroInstituicao() {
@@ -19,10 +18,6 @@ export default function CadastroInstituicao() {
     const [openingTimeValue, setOpeningTimeValue] = useState('');
     const [closingTimeValue, setClosingTimeValue] = useState('');
     const toast = useToast();
-
-    useEffect(
-        ()=>{console.log(nameValue)},[nameValue]
-    )
 
     async function cadastrarInstituicao(){
        
