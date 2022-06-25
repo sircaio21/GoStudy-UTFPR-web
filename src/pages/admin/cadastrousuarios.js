@@ -7,6 +7,8 @@ import Retornar from "../../components/cadastro/retornar"
 import Botoes from "../../components/cadastro/botoes"
 import Inputs from "../../components/cadastro/inputsusuarios"
 export default function Home() {
+    
+
     return (
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
           <Header/>
@@ -14,10 +16,10 @@ export default function Home() {
             <Retornar titulo={'Usuários'}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Inputs/>
+            <Inputs />
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-          <Botoes/>
+            <Botoes />
           </Box>       
         </Box>  
     )

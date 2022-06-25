@@ -33,7 +33,7 @@ export function UserProvider({children}){
                (async  () => {
                 const response = await getUserById({id: decodedToken.id, token: token})
                 if(response.status == 'success'){
-                    setUser(response.data)
+                    setUser({token: token, ...response.data})
                 }else{
                     toast(
                         {
