@@ -8,31 +8,24 @@ import { useEffect, useState } from "react"
 import useUser from "../../hooks/useUser"
 import getAllInstitutes from "../../services/institute/getAllInstitutes"
 
-function handleChange(e) {
-    let isChecked = e.target.checked;
-    if (isChecked) {
-        document.getElementById("RA").disabled = true;
-        document.getElementById("RA").style.backgroundColor = "gray";
-    } else {
-        document.getElementById("RA").disabled = false;
-        document.getElementById("RA").style.backgroundColor = "white";
-    }
-
-  }
-
-
-export default function Retornar() {
+export default function InputsUsuarios({
+    institute, setInstitute,
+    telephone, setTelephone,
+    name, setName,
+    email, setEmail,
+    password, setPassword,
+    ra,setRa,
+    isAdmin,setIsAdmin
+}) {
     const {user} = useUser();
     const [institutes, setInstitutes] = useState([]);
+
     useEffect(
         ()=>{
             (async ()=>{
-                console.log(user)
                 if(user?.token){
-                    const response = await getAllInstitutes(user.token);
-                    console.log(response)
+                    const response = await getAllInstitutes({token: user.token});
                     if(response.status == 'success'){
-                        console.log(response.data[0])
                         setInstitutes(response.data)
                     }
                 }
@@ -49,7 +42,7 @@ export default function Retornar() {
                 
                     <Box margin={5} minWidth={220} >
                     <Text>Instituição</Text>
-                        <Select placeholder='Selecione' borderColor={"gray.400"}>
+                        <Select value={institute} onChange={(e)=>setInstitute(e.target.value)} placeholder='Selecione' borderColor={"gray.400"}>
                             {institutes.map(
                                 (i)=><option value={i?.id}>{i?.name}</option>
                             )}
@@ -59,34 +52,41 @@ export default function Retornar() {
                 
                     <Box margin={5}>
                         <Text>Nome</Text>
-                        <Input size='md' type={"text"} borderColor={"gray.400"} />         
+                        <Input value={name} onChange={(e)=>setName(e.target.value)}
+                         size='md' type={"text"} borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5}>
                         <Text>Telefone</Text>
-                        <Input size='md' type={"tel"} borderColor={"gray.400"} />         
+                        <Input  value={telephone} onChange={(e)=>setTelephone(e.target.value)}
+                         size='md' type={"tel"} borderColor={"gray.400"} />         
                     </Box>  
                
             </Box> 
             <Box display={'flex'} justifyContent={'center'} >   
                     <Box margin={5}>
                         <Text>E-mail</Text>
-                        <Input size='md' type={"email"} borderColor={"gray.400"}  />         
+                        <Input value={email} onChange={(e)=>setEmail(e.target.value)}
+                        size='md' type={"email"} borderColor={"gray.400"}  />         
                     </Box>  
                 
                 
                     <Box margin={5}>
                         <Text>Senha</Text>
-                        <Input size='md' type={"password"} borderColor={"gray.400"}  />         
+                        <Input value={password} onChange={(e)=>setPassword(e.target.value)}
+                        size='md' type={"password"} borderColor={"gray.400"}  />         
                     </Box>   
                     <Box margin={5}>
                         <Text>RA</Text>
-                        <Input size='md' name='RA' id="RA" borderColor={"gray.400"}  />         
+                        <Input  disabled={isAdmin}
+                        value={ra} onChange={(e)=>setRa(e.target.value)}
+                        size='md' name='RA' id="RA" borderColor={"gray.400"}  />         
                     </Box>  
             </Box> 
             <Box display={'flex'} justifyContent={'center'} marginTop={10}>   
-                <Checkbox size='lg' name="check" onChange={e => handleChange(e)}>Usuário administrador</Checkbox>           
+                <Checkbox value={isAdmin} onChange={e =>setIsAdmin(!isAdmin)}
+                 size='lg' name="check" >Usuário administrador</Checkbox>           
             </Box> 
         </Box>
     )

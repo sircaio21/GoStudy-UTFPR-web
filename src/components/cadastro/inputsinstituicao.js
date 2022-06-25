@@ -4,7 +4,13 @@ import { Spacer } from '@chakra-ui/react'
 
 
 
-export default function Retornar() {
+export default function InputsInstituicao({
+        name,setName,
+        city, setCity,
+        telephone, setTelephone,
+        openingTime, setOpeningTime,
+        closingTime, setClosingTime
+    }) {
     return(
         <Box borderRadius={'5px'} borderWidth={'1px'}
         borderColor={'#b2b2b2'} p={10} bgColor={'#FFFFFF'}
@@ -13,32 +19,35 @@ export default function Retornar() {
                 
                     <Box margin={5} >
                     <Text>Nome da instituição</Text>
-                    <Input size='md' type={"text"} borderColor={"gray.400"} />         
+                    <Input value={name} onChange={(e)=>setName(e.target.value)} 
+                    size='md' type={"text"} borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5} >
                     <Text>Cidade</Text>
-                    <Input size='md' type={"text"} borderColor={"gray.400"} />         
+                    <Input value={city} onChange={(e)=>setCity(e.target.value)} 
+                    size='md' type={"text"} borderColor={"gray.400"} />         
                     </Box>  
                 
                 
                     <Box margin={5} >
                     <Text>Telefone</Text>
-                    <Input size='md' type={"tel"} borderColor={"gray.400"} />         
+                    <Input value={telephone} onChange={(e)=>setTelephone(e.target.value)} 
+                     size='md' type={"tel"} borderColor={"gray.400"} />         
                     </Box>  
                
             </Box> 
             <Box display={'flex'} justifyContent={'center'} >   
                     <Box margin={5} >
                     <Text>Horário de abertura</Text>
-                    <Input size='md' type={"time"} borderColor={"gray.400"}  />         
+                    <Input value={openingTime} onChange={(e)=>setOpeningTime(e.target.value)} 
+                    size='md' type={"time"} borderColor={"gray.400"}  />         
                     </Box>  
-                
-                
                     <Box margin={5} >
                     <Text>Horário de fechamento</Text>
-                    <Input size='md' type={"time"} borderColor={"gray.400"}  />         
+                    <Input value={closingTime} onChange={(e)=>setClosingTime(e.target.value)} 
+                    size='md' type={"time"} borderColor={"gray.400"}  />         
                     </Box>   
             </Box> 
         </Box>
