@@ -1,12 +1,63 @@
+import { useEffect, useState } from "react"
 import jwt_decode from "jwt-decode"
 import { parseCookies, destroyCookie } from "nookies"
 import getUserById from "../../services/user/getUserById"
-import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
+import useUser from "../../hooks/useUser"
+import createInstitute from "../../services/institute/createInstitute"
+import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
 import Header from '../../components/Header'
 import Retornar from "../../components/cadastro/retornar"
 import Botoes from "../../components/cadastro/botoes"
-import Inputs from "../../components/cadastro/index"
-export default function Home() {
+import Inputs from "../../components/cadastro/inputsinstituicao"
+import ConfirmModal from "../../components/ConfirmModal"
+export default function CadastroInstituicao() {
+    const {user} = useUser();
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [nameValue, setNameValue] = useState('');
+    const [cityValue, setCityValue] = useState('');
+    const [telephoneValue, setTelephoneValue] = useState('');
+    const [openingTimeValue, setOpeningTimeValue] = useState('');
+    const [closingTimeValue, setClosingTimeValue] = useState('');
+    const toast = useToast();
+
+    useEffect(
+        ()=>{console.log(nameValue)},[nameValue]
+    )
+
+    async function cadastrarInstituicao(){
+       
+        const response = await createInstitute({
+            token:user?.token,
+            name: nameValue,
+            city: cityValue,
+            telephone: telephoneValue,
+            openingTime: openingTimeValue,
+            closingTime: closingTimeValue
+        })
+        if(response){
+            setIsOpenModal(false)
+            toast(
+                {
+                    title: response.message,
+                    status: response.status ,
+                    duration: 3000,
+                    isClosable: true,
+                    position: "top"
+                }
+            )
+            
+            if(response.status == "success"){
+                setNameValue('');
+                setTelephoneValue('');
+                setCityValue('');
+                setOpeningTimeValue('');
+                setClosingTimeValue('');
+            }
+        }
+        
+        
+    }
+
     return (
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
           <Header/>
@@ -14,11 +65,33 @@ export default function Home() {
             <Retornar titulo={'Instituição'}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Inputs/>
+            <Inputs
+                name={nameValue} setName={setNameValue}
+                city={cityValue} setCity={setCityValue}
+                telephone={telephoneValue} setTelephone={setTelephoneValue}
+                openingTime={openingTimeValue} setOpeningTime={setOpeningTimeValue}
+                closingTime={closingTimeValue} setClosingTime={setClosingTimeValue}
+            
+            />
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-          <Botoes/>
-          </Box>       
+            <Flex 
+                    borderRadius={'5px'} borderWidth={'1px'}
+                    borderColor={'#b2b2b2'} p={10} bgColor={'#FFFFFF'}
+                    maxWidth={'1150px'}  width={"100%"} height={"60px"} alignItems={'center'} alignContent={''} justifyContent={'space-evenly'} >
+                    <Button  onClick={()=>setIsOpenModal(true)}
+                    borderColor={'#b2b2b2'} bgColor={'green.500'}
+                    height={'52px'} css={{'&:focus':{ background: "green.100", boxShadow: 'none'}, }}
+                    _hover={{}}
+                    color="white"
+                    >
+                        <Text p={100}>Cadastrar</Text>
+                    </Button>
+                </Flex>
+          </Box>  
+          <ConfirmModal message={"Deseja mesmo cadastrar essa nova instituição?"} confirmAction={cadastrarInstituicao}
+            isOpen={isOpenModal} setIsOpen={setIsOpenModal}
+          />     
         </Box>  
     )
   }

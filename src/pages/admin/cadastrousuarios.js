@@ -14,31 +14,18 @@ import ConfirmModal from "../../components/ConfirmModal"
 export default function CadastroUsuarios() {
     const {user } = useUser();
     const toast = useToast();
-    const [instituteValue, setInstituteValue] =  useState(null);
-    const [nameValue, setNameValue] =  useState(null);
-    const [telephoneValue, setTelephoneValue] =  useState(null);
-    const [emailValue, setEmailValue] =  useState(null);
-    const [passwordValue, setPasswordValue] =  useState(null);
-    const [raValue, setRaValue] = useState(null);
+    const [instituteValue, setInstituteValue] =  useState('');
+    const [nameValue, setNameValue] =  useState('');
+    const [telephoneValue, setTelephoneValue] =  useState('');
+    const [emailValue, setEmailValue] =  useState('');
+    const [passwordValue, setPasswordValue] =  useState('');
+    const [raValue, setRaValue] = useState('');
     const [isAdminValue, setIsAdminValue] = useState(false);
     const [isOpenModal, setIsOpenModal] = useState(false);
 
 
     async function cadastrarUsuario(){
-        if(!instituteValue  || !nameValue || !telephoneValue || !emailValue || !passwordValue || !raValue ||
-          !(isAdminValue==null || isAdminValue==undefined )){
-            setIsOpenModal(false)
-            return toast(
-                {
-                    title: 'Preencha todos os campo do formulário',
-                    status: 'error',
-                    duration: 3000,
-                    isClosable: true,
-                    position: "top"
-                }
-            )
-
-        }
+        
         const response = await createUser({
             token:user?.token,
             id_institute: instituteValue,
@@ -61,13 +48,13 @@ export default function CadastroUsuarios() {
                 }
             )
             if(response.status == "success"){
-                setInstituteValue(null);
-                setNameValue(null);
-                setTelephoneValue(null);
-                setEmailValue(null);
-                setPasswordValue(null);
-                setRaValue(null);
-                setIsAdminValue(false);
+                setInstituteValue('');
+                setNameValue('');
+                setTelephoneValue('');
+                setEmailValue('');
+                setPasswordValue('');
+                setRaValue('');
+                setIsAdminValue('');
             }
         }
     }

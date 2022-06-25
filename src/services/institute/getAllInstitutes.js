@@ -8,7 +8,7 @@ export default async function({token}){
             'Authorization': token
         },
     };
-
+    console.log(token)
     const response = await axios(config)
     .then(function (response) {
         return {message:"Lista de Câmpus encontrado com sucesso",status:"success", data:[...response.data]}
@@ -16,6 +16,7 @@ export default async function({token}){
     .catch(function (error) {
         return {message:"Falha ao encontrar usuário", status:"error", data: error.response.data }
     });
+    console.log(response)
     return response
 
 

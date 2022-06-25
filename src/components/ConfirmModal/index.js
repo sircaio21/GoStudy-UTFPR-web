@@ -19,7 +19,7 @@ export default function ConfirmModal({message, confirmAction,isOpen, setIsOpen})
         isOpen={isOpen}
         style={customStyles}
       >
-        <Box>
+        <Box maxWidth={'400px'}>
             <Text marginBottom={'20px'} fontSize='16px' fontWeight='700'>
                 {message}
             </Text>
