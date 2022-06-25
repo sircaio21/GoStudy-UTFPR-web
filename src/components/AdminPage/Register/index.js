@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react"
-
+import { useRouter } from "next/router"
 export default ()=>{
-    
+    const router = useRouter();
     
     return(
         <Flex p={4} flexDir={'column'} maxWidth={'400px'} minWidth={'350px'} 
@@ -21,6 +21,8 @@ export default ()=>{
                 width={'80%'}
                 mt={2}
                 mb={2}
+                cursor={'pointer'}
+                onClick={()=>router.push('/admin/cadastroinstituicao')}
                 >
                     <Text>Instituição</Text>
                 </Flex>
@@ -33,7 +35,7 @@ export default ()=>{
                 width={'80%'}
                 mt={2}
                 mb={2}>
-                    <Text>Horário</Text>
+                    <Text>Horários</Text>
                 </Flex>
 
                 <Flex 
@@ -53,7 +55,10 @@ export default ()=>{
                 bg={"#E6E6E6"} 
                 width={'80%'}
                 mt={2}
-                mb={2}>
+                mb={2}
+                cursor={'pointer'}
+                onClick={()=>router.push('/admin/cadastrousuarios')}
+                >
                     <Text>Usuários</Text>
                 </Flex>  
                 <Flex 

@@ -19,11 +19,12 @@ export default function InputsUsuarios({
 }) {
     const {user} = useUser();
     const [institutes, setInstitutes] = useState([]);
+
     useEffect(
         ()=>{
             (async ()=>{
                 if(user?.token){
-                    const response = await getAllInstitutes(user.token);
+                    const response = await getAllInstitutes({token: user.token});
                     if(response.status == 'success'){
                         setInstitutes(response.data)
                     }

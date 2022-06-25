@@ -82,19 +82,24 @@ export function UserProvider({children}){
         setIsLoadingAuth(false)
     }
     function signout(){
-        setIsLoadingAuth(true)
-        router.push("/signin")
-        setUser({
-            id: null,
-            fk_id_institute: null,
-            name: null,
-            ra: null,
-            telephone: null,
-            email: null,
-            password: null,
-            isAdmin: null,
-         })
-         destroyCookie({}, 'gostudy-token')
+        setIsLoadingAuth(true) 
+        try{
+            destroyCookie({}, 'gostudy-token')
+            setUser({
+                id: null,
+                fk_id_institute: null,
+                name: null,
+                ra: null,
+                telephone: null,
+                email: null,
+                password: null,
+                isAdmin: null,
+             })
+        }
+        finally{
+            router.push("/signin")
+        }
+        
          setIsLoadingAuth(false)
 
     }
