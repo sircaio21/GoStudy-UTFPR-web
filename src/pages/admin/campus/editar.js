@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode"
 import { parseCookies, destroyCookie } from "nookies"
 import getUserById from "../../../services/user/getUserById"
 import useUser from "../../../hooks/useUser"
-import createInstitute from "../../../services/institute/createInstitute"
+import editInstitute from "../../../services/institute/editInstitute"
 import getOneInstitute from "../../../services/institute/getOneInstitute"
 import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
 import Header from '../../../components/Header'
@@ -12,34 +12,44 @@ import Inputs from "../../../components/cadastro/inputsinstituicao"
 import ConfirmModal from "../../../components/ConfirmModal"
 import { useRouter } from 'next/router'
 
-export default function CadastroInstituicao() {
+export default function EditarInstituicao() {
     const {user} = useUser();
     const router = useRouter();
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [nameValue, setNameValue] = useState('');
-    const [cityValue, setCityValue] = useState('');
-    const [telephoneValue, setTelephoneValue] = useState('');
-    const [openingTimeValue, setOpeningTimeValue] = useState('');
-    const [closingTimeValue, setClosingTimeValue] = useState('');
+    const [idValue, setIdValue] = useState(null);
+    const [nameValue, setNameValue] = useState(null);
+    const [cityValue, setCityValue] = useState(null);
+    const [telephoneValue, setTelephoneValue] = useState(null);
+    const [openingTimeValue, setOpeningTimeValue] = useState(null);
+    const [closingTimeValue, setClosingTimeValue] = useState(null);
     const toast = useToast();
 
-    async function editarInstituicao({id}) {
-        if(user?.token){
-            const response = await getOneInstitute({token: user.token, id: id});
-            if(response.status == 'success'){
-                setNameValue(response.data.name);
-                setTelephoneValue(response.data.telephone);
-                setCityValue(response.data.city);
-                setOpeningTimeValue(response.data.openingTime);
-                setClosingTimeValue(response.data.closingTime);
-            }
-        } 
-    }
+    useEffect(()=>{ setIdValue(router.query.id); }, [])
 
-    async function cadastrarInstituicao(){
+    useEffect(()=>{
+        if (!idValue || !user.token) return;
+        (async function(){
+            const response = await getOneInstitute({
+                token:user?.token,
+                id: idValue
+            })
+            if(response){
+                if(response.status == "success"){
+                    setNameValue(response.data.name);
+                    setTelephoneValue(response.data.telephone);
+                    setCityValue(response.data.city);
+                    setOpeningTimeValue(response.data.openingTime);
+                    setClosingTimeValue(response.data.closingTime);
+                }
+            }
+        })()
+    }, [idValue, user])
+
+    async function editarInstituicao(){
        
-        const response = await createInstitute({
+        const response = await editInstitute({
             token:user?.token,
+            id: idValue,
             name: nameValue,
             city: cityValue,
             telephone: telephoneValue,
@@ -99,11 +109,11 @@ export default function CadastroInstituicao() {
                     _hover={{}}
                     color="white"
                     >
-                        <Text p={100}>Cadastrar</Text>
+                        <Text p={100}>Editar</Text>
                     </Button>
                 </Flex>
           </Box>  
-          <ConfirmModal message={"Deseja mesmo cadastrar essa nova instituição?"} confirmAction={cadastrarInstituicao}
+          <ConfirmModal message={"Deseja mesmo alterar essa nova instituição?"} confirmAction={editarInstituicao}
             isOpen={isOpenModal} setIsOpen={setIsOpenModal}
           />     
         </Box>  

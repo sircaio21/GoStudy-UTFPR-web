@@ -32,7 +32,7 @@ export default function ContainerCampus(){
                     Adicionar
                 </Button>
             </Flex> 
-            <TableCampus campusList={institutes}/>
+            <TableCampus campusList={institutes} setInstitutes={setInstitutes}/>
         </Box>
     )
 }

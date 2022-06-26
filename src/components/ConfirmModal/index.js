@@ -12,7 +12,7 @@ const customStyles = {
   },
 };
 
-export default function ConfirmModal({message, confirmAction,isOpen, setIsOpen}) {
+export default function ConfirmModal({message, confirmAction, isOpen, setIsOpen}) {
 
   return (
       <Modal

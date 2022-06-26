@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default async function ({
   id,
+  token,
   id_room,
   id_user,
   id_schedule,
@@ -17,7 +18,7 @@ export default async function ({
 
   let config = {
     method: "put",
-    url: process.env.URL_SERVER + "/reservation",
+    url: process.env.URL_SERVER + `/reservation/${id}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",

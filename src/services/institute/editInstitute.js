@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default async function ({
   id,
+  token,
   name,
   city,
   telephone,
@@ -18,7 +19,7 @@ export default async function ({
   });
   var config = {
     method: "put",
-    url: process.env.URL_SERVER + "/institute",
+    url: process.env.URL_SERVER + `/institute/${id}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: token,

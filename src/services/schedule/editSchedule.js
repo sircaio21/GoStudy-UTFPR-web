@@ -9,7 +9,7 @@ export default async function ({ token, id, label, initial_time, final_time }) {
   });
   var config = {
     method: "put",
-    url: process.env.URL_SERVER + "/schedule",
+    url: process.env.URL_SERVER + `/schedule/${id}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
