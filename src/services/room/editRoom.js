@@ -1,13 +1,14 @@
 import axios from "axios";
 
-export default async function ({ token, id_institute, number }) {
+export default async function ({ token, id, id_institute, number }) {
   let data = JSON.stringify({
+    id: id,
     fk_id_institute: id_institute,
     number: number,
   });
 
   let config = {
-    method: "post",
+    method: "put",
     url: process.env.URL_SERVER + "/room",
     headers: {
       Authorization: token,
@@ -19,14 +20,14 @@ export default async function ({ token, id_institute, number }) {
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Sala criada com sucesso",
+        message: "Sala alterada com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar sala",
+        message: "Falha ao alterar sala",
         status: "error",
         data: error.response.data,
       };

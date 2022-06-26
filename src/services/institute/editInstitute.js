@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default async function ({
-  token,
   id,
   name,
   city,
@@ -30,14 +29,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Instituição atualizada com sucesso",
+        message: "Instituição alterada com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao atualiazr instituição",
+        message: "Falha ao alterar instituição",
         status: "error",
         data: error.response.data,
       };

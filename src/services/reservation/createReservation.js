@@ -36,7 +36,7 @@ export default async function ({
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar usuário",
+        message: "Falha ao criar reserva",
         status: "error",
         data: error.response.data,
       };

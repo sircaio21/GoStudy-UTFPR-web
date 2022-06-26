@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default async function ({
   token,
+  id,
   id_institute,
   name,
   ra,
@@ -11,6 +12,7 @@ export default async function ({
   isAdmin,
 }) {
   let data = JSON.stringify({
+    id: id,
     fk_id_institute: id_institute,
     name: name,
     ra: ra,
@@ -21,7 +23,7 @@ export default async function ({
   });
 
   let config = {
-    method: "post",
+    method: "put",
     url: process.env.URL_SERVER + "/user",
     headers: {
       Authorization: token,
@@ -33,14 +35,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Usuário criado com sucesso",
+        message: "Usuário alterado com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar usuário",
+        message: "Falha ao alterar usuário",
         status: "error",
         data: error.response.data,
       };

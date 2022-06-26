@@ -1,13 +1,14 @@
 import axios from "axios";
 
-export default async function ({ token, label, initial_time, final_time }) {
+export default async function ({ token, id, label, initial_time, final_time }) {
   var data = JSON.stringify({
+    id: id,
     label: label,
     initial_time: initial_time,
     final_time: final_time,
   });
   var config = {
-    method: "post",
+    method: "put",
     url: process.env.URL_SERVER + "/schedule",
     headers: {
       "Content-Type": "application/json",
@@ -19,14 +20,14 @@ export default async function ({ token, label, initial_time, final_time }) {
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Horário criado com sucesso",
+        message: "Horário alterado com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar horário",
+        message: "Falha ao alterar horário",
         status: "error",
         data: error.response.data,
       };

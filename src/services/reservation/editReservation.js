@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export default async function ({
-  token,
   id,
   id_room,
   id_user,
@@ -17,7 +16,7 @@ export default async function ({
   });
 
   let config = {
-    method: "post",
+    method: "put",
     url: process.env.URL_SERVER + "/reservation",
     headers: {
       Authorization: token,
@@ -29,14 +28,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Reserva criada com sucesso",
+        message: "Reserva alterada com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar usuário",
+        message: "Falha ao alterar reserva",
         status: "error",
         data: error.response.data,
       };
