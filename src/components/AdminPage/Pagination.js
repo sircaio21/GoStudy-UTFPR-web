@@ -7,9 +7,9 @@ import {
 } from '@chakra-ui/react'
 import { Box, Text, Grid, GridItem, Flex, Center, Button, list } from "@chakra-ui/react"
 import {IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+const max_itens = 3;
 const max_left = (max_itens -1)/2;
-
-export default Pagination = ({limit, total, offset, setoffset}) => {
+export default function Pagination ({limit, total, offset, setoffset}) {
     const atual = offset ? (offset / limit) + 1 : 1;
     const pages = Math.ceil(total / limit );
     console.log(pages)

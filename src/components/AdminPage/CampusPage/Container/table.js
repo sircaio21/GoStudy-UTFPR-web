@@ -11,10 +11,11 @@ import {
     TableCaption,
     TableContainer,
   } from '@chakra-ui/react'
-import React, { useEffect, useState } from "react";
-import Pagination from '../Pagination'
-const max_itens = 3;
+import React, { useState } from "react";
+import Pagination from '../../Pagination'
 
+const max_itens = 3;
+const max_left = (max_itens -1)/2;
 export default function ContainerCampus({campusList}){
     const [offset, setoffset] = useState(0);
     return(
@@ -51,10 +52,10 @@ export default function ContainerCampus({campusList}){
             </Table>
         </TableContainer>
         <Pagination 
-                limit={5} 
-                total={campusList?.length} 
-                offset={offset}
-                setoffset={setoffset}
+            limit={5} 
+            total={campusList?.length} 
+            offset={offset}
+            setoffset={setoffset}
         />
     </Box>
     )

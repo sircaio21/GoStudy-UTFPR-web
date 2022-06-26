@@ -4,9 +4,8 @@ import { parseCookies, destroyCookie } from "nookies"
 import jwt_decode from "jwt-decode"
 import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
 import Header from '../../../components/Header'
-import Retornar from "../../../components/visualizacao/visulretornar"
-import Botoes from "../../../components/cadastro/botoes"
-import CampusContainer from "../../../components/visualizacao/campusinput"
+import Retornar from "../../../components/AdminPage/CampusPage/retornar"
+import CampusContainer from "../../../components/AdminPage/CampusPage/Container"
 
 
 export default function Campus() {

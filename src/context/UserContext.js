@@ -76,7 +76,6 @@ export function UserProvider({children}){
                     }else{
                         router.push('/');
                     }
-                    
                 }
             }
         }
