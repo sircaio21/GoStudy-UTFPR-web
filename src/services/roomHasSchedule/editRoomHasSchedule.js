@@ -9,7 +9,7 @@ export default async function ({ token, id, idRoom, idSchedule }) {
 
   var config = {
     method: "put",
-    url: process.env.URL_SERVER + "/roomHasSchedule",
+    url: process.env.URL_SERVER + `/roomHasSchedule/${id}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: token,

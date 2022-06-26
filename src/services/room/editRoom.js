@@ -9,7 +9,7 @@ export default async function ({ token, id, id_institute, number }) {
 
   let config = {
     method: "put",
-    url: process.env.URL_SERVER + "/room",
+    url: process.env.URL_SERVER + `/room/${id}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",

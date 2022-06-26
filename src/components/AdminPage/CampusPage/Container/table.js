@@ -1,4 +1,4 @@
-import { Box, Text, Grid, GridItem, Flex, Center, Button, list } from "@chakra-ui/react"
+import { Box, Text, Grid, GridItem, Flex, Center, Button, list, useToast } from "@chakra-ui/react"
 import { BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
 import {
     Table,
@@ -13,11 +13,52 @@ import {
   } from '@chakra-ui/react'
 import React, { useState } from "react";
 import Pagination from '../../Pagination'
+import { useRouter } from 'next/router'
+import useUser from "../../../../hooks/useUser"
+import deleteInstituteService from '../../../../services/institute/deleteInstitute'
+import editInstituteService from '../../../../services/institute/editInstitute'
+import getAllInstitutes from '../../../../services/institute/getAllInstitutes';
+import ConfirmModal from "../../../../components/ConfirmModal"
 
 const max_itens = 3;
 const max_left = (max_itens -1)/2;
-export default function ContainerCampus({campusList}){
+export default function ContainerCampus({campusList, setInstitutes}){
     const [offset, setoffset] = useState(0);
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const toast = useToast();
+    const {user} = useUser();
+    const router = useRouter();
+
+    async function deleteInstitute({id}) {
+        const response = await deleteInstituteService({
+            token:user?.token,
+            id: id,
+        })
+        if(response){
+            setIsOpenModal(false)
+            toast(
+                {
+                    title: response.message,
+                    status: response.status,
+                    description: response.data?.message || "",
+                    duration: 3000,
+                    isClosable: true,
+                    position: "top"
+                }
+            )
+            if(response.status == "success"){
+                (async ()=>{
+                    if(user?.token){
+                        const response = await getAllInstitutes({token: user.token});
+                        if(response.status == 'success'){
+                            setInstitutes(response.data)
+                        }
+                    } 
+                })()
+            }
+        }
+    }
+
     return(
         <Box borderRadius={'5px'} >
             <TableContainer>
@@ -28,9 +69,9 @@ export default function ContainerCampus({campusList}){
                 <Th backgroundColor={"#DEEEFF"}>Campus</Th>
                 <Th backgroundColor={"#DEEEFF"}>Cidade</Th>
                 <Th backgroundColor={"#DEEEFF"}>Telefone</Th>
-                <Th backgroundColor={"#DEEEFF"}>abertura</Th>
-                <Th backgroundColor={"#DEEEFF"}>fechamento</Th>
-                <Th backgroundColor={"#DEEEFF"} >Acão</Th>
+                <Th backgroundColor={"#DEEEFF"}>Abertura</Th>
+                <Th backgroundColor={"#DEEEFF"}>Fechamento</Th>
+                <Th backgroundColor={"#DEEEFF"}>Acão</Th>
                 </Tr>
             </Thead>
             <Tbody>
@@ -43,8 +84,20 @@ export default function ContainerCampus({campusList}){
                             <Td>{campus.openingTime}</Td>
                             <Td>{campus.closingTime}</Td>
                             <td>
-                                <Button variant='ghost' colorScheme='none' border={'Background'} alignContent={'center'} justifyContent={'center'}  marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
-                                <Button variant='ghost' colorScheme='none' padding={-1}>{<BsFillTrashFill />}</Button>
+                                <Button 
+                                       onClick={()=>router.push(`/admin/campus/editar?id=${campus.id}`)} 
+                                        variant='ghost' colorScheme='none' border={'Background'} 
+                                        alignContent={'center'} justifyContent={'center'}  
+                                        marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
+                                <Button 
+                                        onClick={()=>setIsOpenModal(true)} 
+                                        variant='ghost' 
+                                        colorScheme='none' padding={-1}>{<BsFillTrashFill/>}</Button>
+                                <ConfirmModal 
+                                    message={"Deseja mesmo excluir essa instituição?"} 
+                                    confirmAction={() => deleteInstitute({id: campus.id})}
+                                    isOpen={isOpenModal} setIsOpen={setIsOpenModal}
+                                /> 
                             </td>
                         </Tr> 
                 ))}

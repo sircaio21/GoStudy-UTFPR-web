@@ -1,17 +1,13 @@
 import axios from "axios";
 
 export default async function ({ token, id }) {
-  var data = JSON.stringify({
-    id: id,
-  });
   var config = {
     method: "delete",
-    url: process.env.URL_SERVER + "/institute",
+    url: process.env.URL_SERVER + `/institute/${id}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
     },
-      data: data,
   };
 
   const response = await axios(config)

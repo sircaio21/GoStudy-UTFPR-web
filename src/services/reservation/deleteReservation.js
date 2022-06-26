@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default async function ({
   id,
+  token
 }) {
   let data = JSON.stringify({
     id: id,
@@ -9,7 +10,7 @@ export default async function ({
 
   let config = {
     method: "delete",
-    url: process.env.URL_SERVER + "/reservation",
+    url: process.env.URL_SERVER + `/reservation/${id}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",

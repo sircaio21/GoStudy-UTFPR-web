@@ -24,7 +24,7 @@ export default async function ({
 
   let config = {
     method: "put",
-    url: process.env.URL_SERVER + "/user",
+    url: process.env.URL_SERVER + `/user/${id}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",

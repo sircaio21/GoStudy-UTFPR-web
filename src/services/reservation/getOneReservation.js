@@ -1,34 +1,30 @@
 import axios from "axios";
 
 export default async function ({ token, id }) {
-  var data = JSON.stringify({
-    id: id,
-  });
-
-  var config = {
-    method: "delete",
-    url: process.env.URL_SERVER + `/roomHasSchedule/${id}`,
+  const config = {
+    method: "get",
+    url: `${process.env.URL_SERVER}/reservation/${id}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
     },
-    data: data,
   };
-
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Sala-Horário excluída com sucesso",
+        message: "Reserva encontrado com sucesso",
         status: "success",
-        data: { ...response.data },
+        data: response.data,
       };
     })
     .catch(function (error) {
+      console.log(error)
       return {
-        message: "Falha ao excluir Sala-Horário",
+        message: "Falha ao encontrar a reserva",
         status: "error",
-        data: error.response.data,
+        data: error.response?.data,
       };
     });
-  return response;
+    return response;
 }
+

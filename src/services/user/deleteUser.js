@@ -10,7 +10,7 @@ export default async function ({
 
   let config = {
     method: "delete",
-    url: process.env.URL_SERVER + "/user",
+    url: process.env.URL_SERVER + `/user/${id}`,
     headers: {
       Authorization: token,
       "Content-Type": "application/json",

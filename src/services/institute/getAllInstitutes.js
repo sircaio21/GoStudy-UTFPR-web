@@ -18,7 +18,7 @@ export default async function ({ token }) {
     })
     .catch(function (error) {
       return {
-        message: "Falha ao encontrar usuário",
+        message: "Falha ao encontrar institutos",
         status: "error",
         data: error.response.data,
       };
