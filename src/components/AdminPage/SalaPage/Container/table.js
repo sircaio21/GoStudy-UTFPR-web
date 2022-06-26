@@ -27,6 +27,7 @@ export default function ContainerCampus({salaList}){
                 <Th isNumeric backgroundColor={"#DEEEFF"}>Id</Th>
                 <Th backgroundColor={"#DEEEFF"}>Câmpus</Th>
                 <Th backgroundColor={"#DEEEFF"}>Número</Th>
+                <Th backgroundColor={"#DEEEFF"}>Ações</Th>
                 </Tr>
             </Thead>
             <Tbody>
