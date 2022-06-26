@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function ({
-  token,
+  id,
   name,
   city,
   telephone,
@@ -9,6 +9,7 @@ export default async function ({
   closingTime,
 }) {
   var data = JSON.stringify({
+    id: id,
     name: name,
     city: city,
     telephone: telephone,
@@ -16,7 +17,7 @@ export default async function ({
     closingTime: closingTime,
   });
   var config = {
-    method: "post",
+    method: "put",
     url: process.env.URL_SERVER + "/institute",
     headers: {
       "Content-Type": "application/json",
@@ -28,14 +29,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Instituição criada com sucesso",
+        message: "Instituição alterada com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar instituição",
+        message: "Falha ao alterar instituição",
         status: "error",
         data: error.response.data,
       };

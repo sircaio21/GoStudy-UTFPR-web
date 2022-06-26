@@ -2,25 +2,32 @@ import axios from "axios";
 
 export default async function ({
   token,
+  id,
+  id_institute,
   name,
-  city,
+  ra,
   telephone,
-  openingTime,
-  closingTime,
+  email,
+  password,
+  isAdmin,
 }) {
-  var data = JSON.stringify({
+  let data = JSON.stringify({
+    id: id,
+    fk_id_institute: id_institute,
     name: name,
-    city: city,
+    ra: ra,
     telephone: telephone,
-    openingTime: openingTime,
-    closingTime: closingTime,
+    email: email,
+    password: password,
+    isAdmin: isAdmin,
   });
-  var config = {
-    method: "post",
-    url: process.env.URL_SERVER + "/institute",
+
+  let config = {
+    method: "put",
+    url: process.env.URL_SERVER + "/user",
     headers: {
-      "Content-Type": "application/json",
       Authorization: token,
+      "Content-Type": "application/json",
     },
     data: data,
   };
@@ -28,14 +35,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Instituição criada com sucesso",
+        message: "Usuário alterado com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar instituição",
+        message: "Falha ao alterar usuário",
         status: "error",
         data: error.response.data,
       };

@@ -2,25 +2,18 @@ import axios from "axios";
 
 export default async function ({
   token,
-  name,
-  city,
-  telephone,
-  openingTime,
-  closingTime,
+  id,
 }) {
-  var data = JSON.stringify({
-    name: name,
-    city: city,
-    telephone: telephone,
-    openingTime: openingTime,
-    closingTime: closingTime,
+  let data = JSON.stringify({
+    id: id,
   });
-  var config = {
-    method: "post",
-    url: process.env.URL_SERVER + "/institute",
+
+  let config = {
+    method: "delete",
+    url: process.env.URL_SERVER + "/user",
     headers: {
-      "Content-Type": "application/json",
       Authorization: token,
+      "Content-Type": "application/json",
     },
     data: data,
   };
@@ -28,14 +21,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Instituição criada com sucesso",
+        message: "Usuário excluído com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar instituição",
+        message: "Falha ao excluir usuário",
         status: "error",
         data: error.response.data,
       };

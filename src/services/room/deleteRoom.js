@@ -1,24 +1,13 @@
 import axios from "axios";
 
-export default async function ({
-  token,
-  id,
-  id_room,
-  id_user,
-  id_schedule,
-  reservationDate,
-}) {
+export default async function ({ token, id }) {
   let data = JSON.stringify({
     id: id,
-    fk_id_room: id_room,
-    fk_id_user: id_user,
-    fk_id_schedule: id_schedule,
-    reservationDate: reservationDate,
   });
 
   let config = {
-    method: "post",
-    url: process.env.URL_SERVER + "/reservation",
+    method: "delete",
+    url: process.env.URL_SERVER + "/room",
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -29,14 +18,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Reserva criada com sucesso",
+        message: "Sala excluída com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar reserva",
+        message: "Falha ao excluir sala",
         status: "error",
         data: error.response.data,
       };

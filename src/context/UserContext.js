@@ -38,7 +38,7 @@ export function UserProvider({children}){
                     toast(
                         {
                             title: "Falha de consulta ao usuário",
-                            status: response.status ,
+                            status: response.status,
                             duration: 3000,
                             isClosable: true,
                             position: "top"
@@ -55,6 +55,7 @@ export function UserProvider({children}){
     async function signin({ra, password}){
         setIsLoadingAuth(true)
         const response = await auth({ra, password});
+        console.log(response);
         if(response){
             toast({
                 title: response.message,

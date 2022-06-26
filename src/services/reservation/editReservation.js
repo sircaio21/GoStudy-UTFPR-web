@@ -1,26 +1,26 @@
 import axios from "axios";
 
 export default async function ({
-  token,
-  name,
-  city,
-  telephone,
-  openingTime,
-  closingTime,
+  id,
+  id_room,
+  id_user,
+  id_schedule,
+  reservationDate,
 }) {
-  var data = JSON.stringify({
-    name: name,
-    city: city,
-    telephone: telephone,
-    openingTime: openingTime,
-    closingTime: closingTime,
+  let data = JSON.stringify({
+    id: id,
+    fk_id_room: id_room,
+    fk_id_user: id_user,
+    fk_id_schedule: id_schedule,
+    reservationDate: reservationDate,
   });
-  var config = {
-    method: "post",
-    url: process.env.URL_SERVER + "/institute",
+
+  let config = {
+    method: "put",
+    url: process.env.URL_SERVER + "/reservation",
     headers: {
-      "Content-Type": "application/json",
       Authorization: token,
+      "Content-Type": "application/json",
     },
     data: data,
   };
@@ -28,14 +28,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Instituição criada com sucesso",
+        message: "Reserva alterada com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar instituição",
+        message: "Falha ao alterar reserva",
         status: "error",
         data: error.response.data,
       };

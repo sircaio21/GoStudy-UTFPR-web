@@ -1,23 +1,15 @@
 import axios from "axios";
 
-export default async function ({
-  token,
-  name,
-  city,
-  telephone,
-  openingTime,
-  closingTime,
-}) {
+export default async function ({ token, id, idRoom, idSchedule }) {
   var data = JSON.stringify({
-    name: name,
-    city: city,
-    telephone: telephone,
-    openingTime: openingTime,
-    closingTime: closingTime,
+    id: id,
+    fk_id_room: idRoom,
+    fk_id_schedule: idSchedule,
   });
+
   var config = {
-    method: "post",
-    url: process.env.URL_SERVER + "/institute",
+    method: "put",
+    url: process.env.URL_SERVER + "/roomHasSchedule",
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
@@ -28,14 +20,14 @@ export default async function ({
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Instituição criada com sucesso",
+        message: "Sala-Horário alterada com sucesso",
         status: "success",
         data: { ...response.data },
       };
     })
     .catch(function (error) {
       return {
-        message: "Falha ao criar instituição",
+        message: "Falha ao alterar Sala-Horário",
         status: "error",
         data: error.response.data,
       };

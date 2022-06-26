@@ -34,7 +34,8 @@ export default function CadastroInstituicao() {
             toast(
                 {
                     title: response.message,
-                    status: response.status ,
+                    status: response.status,
+                    description: response.data?.message || "",
                     duration: 3000,
                     isClosable: true,
                     position: "top"
