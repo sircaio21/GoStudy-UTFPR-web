@@ -21,119 +21,9 @@ import {
 } from '@chakra-ui/react'
 
 import {IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-
-
-
-
 const max_itens = 3;
 const max_left = (max_itens -1)/2;
 
-
-
-
-
-const campostable = [
-    {
-      id: 1,
-      campus: "UTFPR-TO",
-      cidade: "Toledo",
-      telefone:"(45) 11234-5678",
-      abertura:"6:55",
-      fechamento: "19:00",
-    },  
-
-    {
-        id: 2,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },  
-      {
-        id: 3,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      }, 
-      {
-        id: 4,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      }, 
-      {
-        id: 5,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },
-      {
-        id: 6,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },
-      {
-        id: 3,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      }, 
-      {
-        id: 4,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      }, 
-      {
-        id: 5,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },
-      {
-        id: 6,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },
-      {
-        id: 6,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },
-      {
-        id: 7,
-        campus: "UTFPR-CM",
-        cidade: "Campo Mourão",
-        telefone:"(45) 11234-5678",
-        abertura:"6:55",
-        fechamento: "19:00",
-      },
-      
-      
-  ]
-  
   const Pagination = ({limit, total, offset, setoffset}) => {
       const atual = offset ? (offset / limit) + 1 : 1;
       const pages = Math.ceil(total / limit );
@@ -164,7 +54,7 @@ const campostable = [
     }
   
 
-  function rowstable(id,campus,cidade,telefone,abertura,fechamento ) {
+  function rowstable({id,campus,cidade,telefone,abertura,fechamento}) {
     return(
         <Tr>
         <Td isNumeric>{id}</Td>
@@ -182,7 +72,7 @@ const campostable = [
     )
 }
 
-  export default function tablevisul(){
+  export default function tablevisul({campusList}){
     
     const [offset, setoffset] = useState(0);
 
@@ -202,15 +92,24 @@ const campostable = [
             </Tr>
           </Thead>
           <Tbody>
-          {campostable.slice(offset,offset+5).map((row) => ( 
-                rowstable(row.id, row.campus, row.cidade, row.telefone, row.abertura,row.fechamento)           
+          {campusList?.slice(offset,offset+5).map((row) => ( 
+                rowstable(
+                  {
+                    id:row.id ,
+                    campus: row.name,
+                    cidade: row.city, 
+                    telefone: row.telephone,
+                    abertura: row.openingTime,
+                    fechamento: row.closingTime
+                }
+                )           
               ))}
           </Tbody>
         </Table>
       </TableContainer>
       <Pagination 
             limit={5} 
-            total={campostable.length} 
+            total={campusList?.length} 
             offset={offset}
             setoffset={setoffset}
             />

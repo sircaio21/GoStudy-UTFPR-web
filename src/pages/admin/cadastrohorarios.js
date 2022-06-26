@@ -10,7 +10,6 @@ import Inputs from "../../components/cadastro/inputshorarios"
 import { useState } from "react"
 import useUser from "../../hooks/useUser"
 import ConfirmModal from "../../components/ConfirmModal"
-import useUser from "../../hooks/useUser"
 export default function CadastroHorarios() {
     const {user} = useUser();
     const [isOpenModal, setIsOpenModal] = useState(false);

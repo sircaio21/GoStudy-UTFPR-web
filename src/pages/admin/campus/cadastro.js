@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 import jwt_decode from "jwt-decode"
 import { parseCookies, destroyCookie } from "nookies"
-import getUserById from "../../services/user/getUserById"
-import useUser from "../../hooks/useUser"
-import createInstitute from "../../services/institute/createInstitute"
+import getUserById from "../../../services/user/getUserById"
+import useUser from "../../../hooks/useUser"
+import createInstitute from "../../../services/institute/createInstitute"
 import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
-import Header from '../../components/Header'
-import Retornar from "../../components/cadastro/retornar"
-import Inputs from "../../components/cadastro/inputsinstituicao"
-import ConfirmModal from "../../components/ConfirmModal"
+import Header from '../../../components/Header'
+import Retornar from "../../../components/cadastro/retornar"
+import Inputs from "../../../components/cadastro/inputsinstituicao"
+import ConfirmModal from "../../../components/ConfirmModal"
 export default function CadastroInstituicao() {
     const {user} = useUser();
     const [isOpenModal, setIsOpenModal] = useState(false);

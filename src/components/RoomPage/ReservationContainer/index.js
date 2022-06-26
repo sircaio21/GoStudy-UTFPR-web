@@ -11,7 +11,7 @@ import getAllRooms from "../../../services/room/getAllRooms"
 import useUser from "../../../hooks/useUser"
 export default function ReservationContainer() {
     const { user } = useUser();
-    const {reservations} = useReservation();
+    const {reservations, filteredReservations,getRoomsReservations} = useReservation();
     const [rooms, setRooms] = useState([]);
     const [selectedRoom, setSelectedRoom ] = useState(null);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -41,7 +41,10 @@ export default function ReservationContainer() {
 
     useEffect(
         ()=>{
-
+            if(selectedRoom && selectedDate){
+               let reservationRoom = getRoomsReservations({idRoom:selectedRoom,date:selectedDate});
+               
+            }
         },[selectedRoom,selectedDate ]
     )
     
@@ -54,8 +57,11 @@ export default function ReservationContainer() {
             <BoxSalas salas={rooms} selectedRoom={selectedRoom} setSelectedRoom={setSelectedRoom} />
             <Spacer />       
             <Box alignItems={'center'} alignContent={'center'} >
-                <Input value={selectedDate} onChange={(e)=>setSelectedDate(e.target.value)}
-                type='date' width={'150px'} />
+                <Flex alignItems={'center'}>
+                    <Text fontSize={'22px'} fontWeight='700' mr={'20px'}> Data Reserva: </Text>
+                    <Input value={selectedDate} onChange={(e)=>setSelectedDate(e.target.value)}
+                    type='date' width={'150px'} />
+                </Flex>
                 <Flex marginLeft={'200px'}>
                     <Box p={5} display={'flex'} alignItems={'center'}>
                         <BsCheckCircle color="green" />

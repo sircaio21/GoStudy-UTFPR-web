@@ -6,7 +6,7 @@ import useUser from "../hooks/useUser";
 export function ReservationProvider({children}){
     const {user} = useUser();
     const [reservations, setReservations] = useState([]);
-    
+    const [filteredReservations, setFilteredReservations] = useState([]);
     useEffect(
         ()=>{
             (async ()=>{
@@ -21,9 +21,23 @@ export function ReservationProvider({children}){
         },[user]
     )
 
+    function getRoomsReservations({date, idRoom}){
+        
+        console.log(date, idRoom)
+        console.log(reservations)
+        let aux = reservations.filter(
+            (r)=>{
+                return r.reservationDate == date && r.fk_id_room == idRoom
+            }
+        )
+        setFilteredReservations(aux)
+    }
+
     return <ReservationContext.Provider
      value={{
-        reservations, setReservations
+        reservations, setReservations,
+        filteredReservations,
+        getRoomsReservations
      }}>
        {children} 
     </ReservationContext.Provider>
