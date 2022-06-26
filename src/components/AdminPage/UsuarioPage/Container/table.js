@@ -17,7 +17,7 @@ const max_itens = 3;
 
 export default function ContainerUser({userList}){
     const [offset, setoffset] = useState(0);
-    
+
     return(
         <Box borderRadius={'5px'} >
             <TableContainer>
@@ -25,11 +25,12 @@ export default function ContainerUser({userList}){
             <Thead>
                 <Tr>
                 <Th isNumeric backgroundColor={"#DEEEFF"}>Id</Th>
-                <Th backgroundColor={"#DEEEFF"}>Campus</Th>
-                <Th backgroundColor={"#DEEEFF"}>Cidade</Th>
+                <Th backgroundColor={"#DEEEFF"}>Nome</Th>
+                <Th backgroundColor={"#DEEEFF"}>RA</Th>
                 <Th backgroundColor={"#DEEEFF"}>Telefone</Th>
-                <Th backgroundColor={"#DEEEFF"}>abertura</Th>
-                <Th backgroundColor={"#DEEEFF"}>fechamento</Th>
+                <Th backgroundColor={"#DEEEFF"}>E-mail</Th>
+                <Th backgroundColor={"#DEEEFF"}>Senha</Th>
+                <Th backgroundColor={"#DEEEFF"} >Admin</Th>
                 <Th backgroundColor={"#DEEEFF"} >Acão</Th>
                 </Tr>
             </Thead>
@@ -38,10 +39,11 @@ export default function ContainerUser({userList}){
                         <Tr>
                             <Td isNumeric>{user.id}</Td>
                             <Td>{user.name}</Td>
-                            <Td>{user.city}</Td>
+                            <Td>{user.ra}</Td>
                             <Td>{user.telephone}</Td>
-                            <Td>{user.openingTime}</Td>
-                            <Td>{user.closingTime}</Td>
+                            <Td>{user.email}</Td>
+                            <Td>{user.password}</Td>
+                            <Td>{String(user.isAdmin)}</Td>
                             <td>
                                 <Button variant='ghost' colorScheme='none' border={'Background'} alignContent={'center'} justifyContent={'center'}  marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
                                 <Button variant='ghost' colorScheme='none' padding={-1}>{<BsFillTrashFill />}</Button>
