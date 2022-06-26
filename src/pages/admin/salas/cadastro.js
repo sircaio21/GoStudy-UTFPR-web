@@ -1,17 +1,17 @@
 import jwt_decode from "jwt-decode"
 import { parseCookies, destroyCookie } from "nookies"
-import getUserById from "../../services/user/getUserById"
+import getUserById from "../../../services/user/getUserById"
 import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
-import Header from '../../components/Header'
-import Retornar from "../../components/cadastro/retornar"
-import Botoes from "../../components/cadastro/botoes"
-import Inputs from "../../components/cadastro/inputssalas"
-import Horarios from "../../components/RoomPage/ReservationContainer/horarios"
-import createRoom from "../../services/room/createRoom";
-import getSchedules from "../../services/schedule/getSchedules"
-import createRoomHasSchedule from "../../services/roomHasSchedule/createRoomHasSchedule"
-import ConfirmModal from "../../components/ConfirmModal"
-import useUser from "../../hooks/useUser"
+import Header from '../../../components/Header'
+import Retornar from "../../../components/AdminPage/SalaPage/retornar"
+import Botoes from "../../../components/cadastro/botoes"
+import Inputs from "../../../components/cadastro/inputssalas"
+import Horarios from "../../../components/RoomPage/ReservationContainer/horarios"
+import createRoom from "../../../services/room/createRoom";
+import getSchedules from "../../../services/schedule/getSchedules"
+import createRoomHasSchedule from "../../../services/roomHasSchedule/createRoomHasSchedule"
+import ConfirmModal from "../../../components/ConfirmModal"
+import useUser from "../../../hooks/useUser"
 import { useState } from "react"
 
 export default function CadastroSalas() {
@@ -53,9 +53,6 @@ export default function CadastroSalas() {
                 setIdInstituteValue('');
                 setNumberValue('')
             }
-
-
-            
         }
     }
 
@@ -63,7 +60,7 @@ export default function CadastroSalas() {
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
           <Header/>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Retornar titulo={'Salas'}/>
+            <Retornar titulo={'Cadastro de Salas'}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
             <Inputs
