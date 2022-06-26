@@ -1,19 +1,8 @@
 import axios from "axios";
 
-export default async function ({
-  token,
-  name,
-  city,
-  telephone,
-  openingTime,
-  closingTime,
-}) {
+export default async function ({ token, id }) {
   var data = JSON.stringify({
-    name: name,
-    city: city,
-    telephone: telephone,
-    openingTime: openingTime,
-    closingTime: closingTime,
+    id: id,
   });
   var config = {
     method: "post",
