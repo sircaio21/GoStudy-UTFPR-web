@@ -9,7 +9,7 @@ export default function Retornar({titulo}) {
         borderColor={'#b2b2b2'} p={6} bgColor={'#FFFFFF'}
         maxWidth={'1150px'}  width={"100%"} height={"60px"} alignItems={'center'} >
             <IconButton 
-                onClick={()=>router.push('/admin/campus')}
+                onClick={()=>router.push('/admin/usuarios')}
                 marginRight={'10px'}
                 colorScheme='gray'
                 bgColor={'whiteAlpha.100'}

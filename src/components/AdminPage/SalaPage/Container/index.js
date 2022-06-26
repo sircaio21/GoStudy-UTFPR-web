@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import useUser from '../../../../hooks/useUser';
 import { useState, useEffect } from 'react';
 import getAllRooms from '../../../../services/room/getAllRooms'
+import getOneInstitute from '../../../../services/institute/getOneInstitute'
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { Box, Flex, Button,  } from '@chakra-ui/react';
 
@@ -16,9 +17,24 @@ export default function ContainerSala(){
             (async ()=>{
                 if(user?.token){
                     const response = await getAllRooms({token: user.token});
+                    let formattedRoom = []
                     if(response.status == 'success'){
-                        let formattedRoom = []
                         setRooms(response.data)
+                        // await response.data.map(
+                        //     async (room)=>{
+                        //         if(room.fk_id_institute){
+                        //             await getOneInstitute({id:room.fk_id_institute,token:user?.token})
+                        //             .then(
+                        //                 (res)=>{
+                        //                     formattedRoom.push({id: room.id, number: room.number, fk_id_institute:res.data.name })
+                        //             })
+                        //             .catch(err=>console.log(err))
+                        //             .finally(
+                        //                 ()=>setRooms(formattedRoom)
+                        //             )
+                        //         }
+                        //     }
+                        // )
                     }
                 } 
             })()

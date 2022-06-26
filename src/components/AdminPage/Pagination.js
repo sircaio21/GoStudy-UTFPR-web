@@ -12,7 +12,6 @@ const max_left = (max_itens -1)/2;
 export default function Pagination ({limit, total, offset, setoffset}) {
     const atual = offset ? (offset / limit) + 1 : 1;
     const pages = Math.ceil(total / limit );
-    console.log(pages)
     const first = Math.max(atual - max_left, 1);
     
 

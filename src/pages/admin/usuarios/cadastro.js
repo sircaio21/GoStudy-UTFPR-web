@@ -1,15 +1,15 @@
 import jwt_decode from "jwt-decode"
 import { parseCookies, destroyCookie } from "nookies"
 import { useState } from 'react'
-import useUser from "../../hooks/useUser"
-import getUserById from "../../services/user/getUserById"
-import createUser from '../../services/user/createUser'
+import useUser from "../../../hooks/useUser"
+import getUserById from "../../../services/user/getUserById"
+import createUser from '../../../services/user/createUser'
 import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
-import Header from '../../components/Header'
-import Retornar from "../../components/cadastro/retornar"
-import Botoes from "../../components/cadastro/botoes"
-import Inputs from "../../components/cadastro/inputsusuarios"
-import ConfirmModal from "../../components/ConfirmModal"
+import Header from '../../../components/Header'
+import Retornar from "../../../components/cadastro/retornar"
+import Botoes from "../../../components/cadastro/botoes"
+import Inputs from "../../../components/cadastro/inputsusuarios"
+import ConfirmModal from "../../../components/ConfirmModal"
 
 export default function CadastroUsuarios() {
     const {user } = useUser();

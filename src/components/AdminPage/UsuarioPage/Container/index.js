@@ -30,7 +30,7 @@ export default function ContainerUser(){
         borderColor={'#b2b2b2'} p={10} bgColor={'#FFFFFF'}
         maxWidth={'1150px'}  width={"100%"} maxHeight={'550px'} height={'100%'} justifyContent={'center'} alignItems={'center'} alignContent={'center'}>
             <Flex width={'100%'} justifyContent="right"  marginBottom={'10px'} color={'#3584CC'}>
-                <Button onClick={()=>router.push('/admin/campus/cadastro')} leftIcon={<IoIosAddCircleOutline />}  colorScheme='blue' variant='solid'>
+                <Button onClick={()=>router.push('/admin/usuarios/cadastro')} leftIcon={<IoIosAddCircleOutline />}  colorScheme='blue' variant='solid'>
                     Adicionar
                 </Button>
             </Flex> 
