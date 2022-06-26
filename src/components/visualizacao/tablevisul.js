@@ -52,27 +52,8 @@ const max_left = (max_itens -1)/2;
           </List>
       )
     }
-  
 
-  function rowstable({id,campus,cidade,telefone,abertura,fechamento}) {
-    return(
-        <Tr>
-        <Td isNumeric>{id}</Td>
-        <Td>{campus}</Td>
-        <Td>{cidade}</Td>
-        <Td>{telefone}</Td>
-        <Td>{abertura}</Td>
-        <Td>{fechamento}</Td>
-        <td>
-            <Button variant='ghost' colorScheme='none' border={'Background'} alignContent={'center'} justifyContent={'center'}  marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
-            <Button variant='ghost' colorScheme='none' padding={-1}>{<BsFillTrashFill />}</Button>
-        </td>
-        </Tr>
-        
-    )
-}
-
-  export default function tablevisul({campusList}){
+  export default function CampusTable({campusList}){
     
     const [offset, setoffset] = useState(0);
 
@@ -92,17 +73,19 @@ const max_left = (max_itens -1)/2;
             </Tr>
           </Thead>
           <Tbody>
-          {campusList?.slice(offset,offset+5).map((row) => ( 
-                rowstable(
-                  {
-                    id:row.id ,
-                    campus: row.name,
-                    cidade: row.city, 
-                    telefone: row.telephone,
-                    abertura: row.openingTime,
-                    fechamento: row.closingTime
-                }
-                )           
+          {campusList?.slice(offset,offset+5).map((campus) => (  
+                <Tr>
+                <Td isNumeric>{campus.id}</Td>
+                <Td>{campus.name}</Td>
+                <Td>{campus.city}</Td>
+                <Td>{campus.telephone}</Td>
+                <Td>{campus.openingTime}</Td>
+                <Td>{campus.closingTime}</Td>
+                <td>
+                    <Button variant='ghost' colorScheme='none' border={'Background'} alignContent={'center'} justifyContent={'center'}  marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
+                    <Button variant='ghost' colorScheme='none' padding={-1}>{<BsFillTrashFill />}</Button>
+                </td>
+                </Tr>    
               ))}
           </Tbody>
         </Table>

@@ -1,15 +1,11 @@
-import { Box, Text, Grid, GridItem, Flex, Center, Button, flexbox } from "@chakra-ui/react"
-import { Input } from '@chakra-ui/react'
-import { Spacer } from '@chakra-ui/react'
-import { AiOutlineSearch } from 'react-icons/ai';
+import TableCampus from './table'
+import { useRouter } from 'next/router'
+import useUser from '../../../../hooks/useUser';
+import { useState, useEffect } from 'react';
+import getAllInstitutes from '../../../../services/institute/getAllInstitutes';
 import { IoIosAddCircleOutline } from 'react-icons/io';
-import Table from "./tablevisul"
-import getAllInstitutes from "../../services/institute/getAllInstitutes";
-import { useEffect, useState } from "react";
-import useUser from "../../hooks/useUser";
-import { useRouter } from "next/router";
-
-export default function Retornar() {
+import { Box, Flex, Button,  } from '@chakra-ui/react';
+export default function ContainerCampus(){
     const router = useRouter();
     const {user} = useUser();
     const [institutes, setInstitutes] = useState([]);
@@ -36,7 +32,7 @@ export default function Retornar() {
                     Adicionar
                 </Button>
             </Flex> 
-            <Table campusList={institutes}/>
+            <TableCampus campusList={institutes}/>
         </Box>
     )
 }
