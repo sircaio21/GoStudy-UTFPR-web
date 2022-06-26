@@ -48,12 +48,12 @@ export default function InputsSalas({
                     size='md' borderColor={"gray.400"} />         
                     </Box>  
             </Box> 
-            {/* <Box display={'flex'} justifyContent={'center'} >    
+            <Box display={'flex'} justifyContent={'center'} >    
                 <Text>Selecione os horários de funcionamento</Text>       
             </Box> 
             <Box display={'flex'} justifyContent={'center'} >    
                 <Horarios/>       
-            </Box> */}
+            </Box>
         </Box>
     )
 }

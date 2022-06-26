@@ -6,8 +6,10 @@ import Header from '../../components/Header'
 import Retornar from "../../components/cadastro/retornar"
 import Botoes from "../../components/cadastro/botoes"
 import Inputs from "../../components/cadastro/inputssalas"
-import Horarios from "../../components/RoomPage/Salas/horarios"
-import createRoom from "../../services/room/createRoom"
+import Horarios from "../../components/RoomPage/ReservationContainer/horarios"
+import createRoom from "../../services/room/createRoom";
+import getSchedules from "../../services/schedule/getSchedules"
+import createRoomHasSchedule from "../../services/roomHasSchedule/createRoomHasSchedule"
 import ConfirmModal from "../../components/ConfirmModal"
 import useUser from "../../hooks/useUser"
 import { useState } from "react"
@@ -20,27 +22,40 @@ export default function CadastroSalas() {
     const [numberValue, setNumberValue] = useState(''); 
 
     async function cadastrarSalas(){
-        const response = await createRoom({
+        const resCreateRoom = await createRoom({
             token:user?.token,
             id_institute: idInstituteValue,
             number:numberValue
         })
-        if(response){
-            setIsOpenModal(false)
-            toast(
-                {
-                    title: response.message,
-                    status: response.status ,
-                    duration: 3000,
-                    isClosable: true,
-                    position: "top"
-                }
-            )
-            if(response.status == "success"){
+        if(resCreateRoom && resCreateRoom?.status=='success'){
+            const resSchedules = await getSchedules({token:user?.token});
+            if(resSchedules && resSchedules?.status == "success"){
+              
+                await resSchedules.data.map(
+                    async (schedule)=>{
+                        await createRoomHasSchedule({
+                            token: user?.token,
+                            idRoom: resCreateRoom.data.id,
+                            idSchedule: schedule.id
+                        })
+                    }
+                )
+                toast(
+                    {
+                        title: resCreateRoom.message,
+                        status: resCreateRoom.status ,
+                        duration: 3000,
+                        isClosable: true,
+                        position: "top"
+                    }
+                )
                 setIsOpenModal(false);
                 setIdInstituteValue('');
                 setNumberValue('')
             }
+
+
+            
         }
     }
 
