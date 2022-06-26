@@ -1,6 +1,6 @@
 import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
 import Header from '../components/Header'
-import Salas from "../components/RoomPage/Salas/index"
+import Salas from "../components/RoomPage/ReservationContainer"
 import Retornar from "../components/RoomPage/EditarReserva"
 import {parseCookies} from 'nookies'
 

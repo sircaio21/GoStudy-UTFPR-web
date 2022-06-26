@@ -1,30 +1,29 @@
-import jwt_decode from "jwt-decode"
+
+import getUserById from "../../../services/user/getUserById"
 import { parseCookies, destroyCookie } from "nookies"
-import getUserById from "../../services/user/getUserById"
+import jwt_decode from "jwt-decode"
 import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
-import Header from '../../components/Header'
-import Retornar from "../../components/cadastro/retornar"
-import Botoes from "../../components/cadastro/botoes"
-import Inputs from "../../components/cadastro/inputsreservas"
-import Horarios from "../../components/RoomPage/ReservationContainer/horarios"
-export default function Home() {
+import Header from '../../../components/Header'
+import Retornar from "../../../components/visualizacao/visulretornar"
+import Botoes from "../../../components/cadastro/botoes"
+import CampusContainer from "../../../components/visualizacao/campusinput"
+
+
+export default function Campus() {
     return (
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
           <Header/>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Retornar titulo={'Reservas'}/>
+            <Retornar titulo={'Campus'}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Inputs/>
-          </Box>
-          <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-          <Botoes/>
-          </Box>       
+            <CampusContainer/>          
+          </Box>    
         </Box>  
     )
   }
 
-  export const getServerSideProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
     const { 'gostudy-token': token } = parseCookies(ctx);
     if (!token) {
         return {
@@ -59,4 +58,3 @@ export default function Home() {
         props: {}
     }
 }
-  
