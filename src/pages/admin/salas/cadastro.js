@@ -27,7 +27,6 @@ export default function CadastroSalas() {
             id_institute: idInstituteValue,
             number:numberValue
         })
-        console.log(resCreateRoom)
         if(resCreateRoom && resCreateRoom?.status=='success'){
             const resSchedules = await getSchedules({token:user?.token});
             if(resSchedules && resSchedules?.status == "success"){
