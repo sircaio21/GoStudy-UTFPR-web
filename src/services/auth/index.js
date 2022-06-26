@@ -2,9 +2,9 @@
 
 import axios from 'axios'
 
-export default async function({ra, password}){
+export default async function({email, password}){
     var data = JSON.stringify({
-    "ra": ra,
+    'email':email,
     "password": password
     });
 

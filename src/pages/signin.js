@@ -22,7 +22,7 @@ export default function Signin() {
         padding="0"
         bgSize="cover"
         bgImage={'/background.png'}>  
-            <Box borderRadius={'10px'} bg={'white'} height="360px"  width={'360px'}>
+            <Box borderRadius={'10px'} bg={'white'} height="max-content"  width={'360px'}>
                 <Flex cursor={'pointer'} width={"100%"}>
                     <Text  onClick={()=>setIsLogin(true)}
                      bg={isLogin?"":"#D9D8D2"} textAlign={'center'} width={"50%"}  p={2}

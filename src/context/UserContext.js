@@ -52,9 +52,9 @@ export function UserProvider({children}){
         },[]
     )
 
-    async function signin({ra, password}){
+    async function signin({email,ra, password}){
         setIsLoadingAuth(true)
-        const response = await auth({ra, password});
+        const response = await auth({email,ra, password});
         console.log(response);
         if(response){
             toast({

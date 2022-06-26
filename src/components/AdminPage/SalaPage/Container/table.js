@@ -34,7 +34,7 @@ export default function ContainerCampus({salaList}){
             {salaList?.slice(offset,offset+5).map((sala) => ( 
                         <Tr>
                             <Td isNumeric>{sala.id}</Td>
-                            <Td>{sala.fk_id_institute}</Td>
+                            <Td>{sala.Institute.name}</Td>
                             <Td>{sala.number}</Td>
                             <td>
                                 <Button variant='ghost' colorScheme='none' 

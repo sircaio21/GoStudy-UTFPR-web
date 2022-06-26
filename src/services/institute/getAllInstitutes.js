@@ -5,7 +5,7 @@ export default async function ({ token }) {
     method: "get",
     url: `${process.env.URL_SERVER}/institute`,
     headers: {
-      Authorization: token,
+      Authorization: token ,
     },
   };
   const response = await axios(config)
