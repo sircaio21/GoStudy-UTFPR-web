@@ -18,7 +18,7 @@ export default function Retornar({titulo}) {
             <Text fontWeight={'medium'} fontSize='26px' marginTop={'-5px'}>
                 {titulo}
             </Text>
-            
+    
           </Flex>
     )
 };

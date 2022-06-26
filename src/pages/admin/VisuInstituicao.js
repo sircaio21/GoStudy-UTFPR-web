@@ -12,8 +12,7 @@ export default function Home() {
             <Retornar titulo={'Campus'}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Inputs/>
-            
+            <Inputs/>          
           </Box>    
         </Box>  
     )
