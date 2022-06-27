@@ -4,9 +4,6 @@ export default async function ({
   id,
   token
 }) {
-  let data = JSON.stringify({
-    id: id,
-  });
 
   let config = {
     method: "delete",
@@ -15,7 +12,6 @@ export default async function ({
       Authorization: token,
       "Content-Type": "application/json",
     },
-    data: data,
   };
 
   const response = await axios(config)

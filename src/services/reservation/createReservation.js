@@ -2,14 +2,12 @@ import axios from "axios";
 
 export default async function ({
   token,
-  id,
   id_room,
   id_user,
   id_schedule,
   reservationDate,
 }) {
   let data = JSON.stringify({
-    id: id,
     fk_id_room: id_room,
     fk_id_user: id_user,
     fk_id_schedule: id_schedule,
