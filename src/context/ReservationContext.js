@@ -13,7 +13,6 @@ export function ReservationProvider({children}){
                 if(user.token){
                     const response = await getAllReservation({token: user.token});
                     if(response.status == "success"){
-                        console.log(response.data)
                         setReservations(response.data)
                     }
                 }

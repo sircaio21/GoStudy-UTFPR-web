@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export default async function ({ token, id }) {
+export default async function ({ token, idRoom, reservationDate}) {
   const config = {
     method: "get",
-    url: `${process.env.URL_SERVER}/user/${id}`,
+    url: `${process.env.URL_SERVER}/reservation/filter/roomAndDate/${idRoom}&${reservationDate}`,
     headers: {
       Authorization: token,
     },
@@ -11,15 +11,14 @@ export default async function ({ token, id }) {
   const response = await axios(config)
     .then(function (response) {
       return {
-        message: "Usuário encontrado com sucesso",
+        message: "ShowReservationRoomDate encontrada com sucesso",
         status: "success",
-        data: response.data ,
+        data: [...response.data],
       };
     })
     .catch(function (error) {
-      console.log(error)
       return {
-        message: "Falha ao encontrar usuário",
+        message: "Falha ao encontrar ShowReservationRoomDate",
         status: "error",
         data: error.response.data,
       };

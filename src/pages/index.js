@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Reservas from "../components/MainPage/Reservas"
 import Informacoes from "../components/MainPage/Informacoes"
 import useUser from '../hooks/useUser'
+
 export default function Main() {
   return (
       <Box bgColor={"#E5E5E5"} width={'100%'} height={'100vh'}>
@@ -12,7 +13,7 @@ export default function Main() {
           <Reservas/>
         </Box>
         <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-        <Informacoes/>
+          <Informacoes />
         </Box>
       </Box> 
   )
