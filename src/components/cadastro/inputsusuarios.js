@@ -33,7 +33,7 @@ export default function InputsUsuarios({
             })()
         },[user]
     )
-
+    
     return(
         <Box borderRadius={'5px'} borderWidth={'1px'}
         borderColor={'#b2b2b2'} p={10} bgColor={'#FFFFFF'}
@@ -85,8 +85,8 @@ export default function InputsUsuarios({
                     </Box>  
             </Box> 
             <Box display={'flex'} justifyContent={'center'} marginTop={10}>   
-                <Checkbox value={isAdmin} onChange={e =>setIsAdmin(!isAdmin)}
-                 size='lg' name="check" >Usuário administrador</Checkbox>           
+                <Checkbox value={isAdmin} isChecked={isAdmin} onChange={e =>setIsAdmin(!isAdmin)}
+                 size='lg' name="check" >Usuário administrador</Checkbox>
             </Box> 
         </Box>
     )

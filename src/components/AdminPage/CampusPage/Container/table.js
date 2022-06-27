@@ -16,7 +16,6 @@ import Pagination from '../../Pagination'
 import { useRouter } from 'next/router'
 import useUser from "../../../../hooks/useUser"
 import deleteInstituteService from '../../../../services/institute/deleteInstitute'
-import editInstituteService from '../../../../services/institute/editInstitute'
 import getAllInstitutes from '../../../../services/institute/getAllInstitutes';
 import ConfirmModal from "../../../../components/ConfirmModal"
 
@@ -24,6 +23,7 @@ const max_itens = 3;
 const max_left = (max_itens -1)/2;
 export default function ContainerCampus({campusList, setInstitutes}){
     const [offset, setoffset] = useState(0);
+    const [deleteIndex, setDeleteIndex] = useState(null);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const toast = useToast();
     const {user} = useUser();
@@ -90,17 +90,17 @@ export default function ContainerCampus({campusList, setInstitutes}){
                                         alignContent={'center'} justifyContent={'center'}  
                                         marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
                                 <Button 
-                                        onClick={()=>setIsOpenModal(true)} 
+                                        onClick={()=>{setDeleteIndex(campus.id), setIsOpenModal(true)}} 
                                         variant='ghost' 
                                         colorScheme='none' padding={-1}>{<BsFillTrashFill/>}</Button>
-                                <ConfirmModal 
-                                    message={"Deseja mesmo excluir essa instituição?"} 
-                                    confirmAction={() => deleteInstitute({id: campus.id})}
-                                    isOpen={isOpenModal} setIsOpen={setIsOpenModal}
-                                /> 
                             </td>
                         </Tr> 
                 ))}
+                <ConfirmModal 
+                    message={"Deseja mesmo excluir essa instituição?"} 
+                    confirmAction={() => deleteInstitute({id: deleteIndex})}
+                    isOpen={isOpenModal} setIsOpen={setIsOpenModal}
+                />
             </Tbody>
             </Table>
         </TableContainer>

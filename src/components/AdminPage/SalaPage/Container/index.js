@@ -50,7 +50,7 @@ export default function ContainerSala(){
                     Adicionar
                 </Button>
             </Flex> 
-            <TableSalas salaList={rooms}/>
+            <TableSalas salaList={rooms} setRooms={setRooms}/>
         </Box>
     )
 }

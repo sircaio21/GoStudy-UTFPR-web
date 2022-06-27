@@ -4,7 +4,7 @@ import { parseCookies, destroyCookie } from "nookies"
 import jwt_decode from "jwt-decode"
 import { Box, Flex,Grid,GridItem,Text, Button } from "@chakra-ui/react"
 import Header from '../../../components/Header'
-import Retornar from "../../../components/AdminPage/CampusPage/retornar"
+import Retornar from "../../../components/AdminPage/Retornar"
 import CampusContainer from "../../../components/AdminPage/CampusPage/Container"
 
 
@@ -13,7 +13,7 @@ export default function Campus() {
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
           <Header/>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Retornar titulo={'Campus'}/>
+            <Retornar titulo={'Câmpus'} direction={''}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
             <CampusContainer/>          

@@ -34,7 +34,7 @@ export default function ContainerUser(){
                     Adicionar
                 </Button>
             </Flex> 
-            <TableUsers userList={users}/>
+            <TableUsers userList={users} setUsers={setUsers}/>
         </Box>
     )
 }
