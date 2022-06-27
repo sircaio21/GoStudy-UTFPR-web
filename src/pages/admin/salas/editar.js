@@ -4,54 +4,61 @@ import getUserById from "../../../services/user/getUserById"
 import { Box, Flex,Grid,GridItem,Text, Button, useToast } from "@chakra-ui/react"
 import Header from '../../../components/Header'
 import Retornar from "../../../components/AdminPage/Retornar"
-import Botoes from "../../../components/cadastro/botoes"
 import Inputs from "../../../components/cadastro/inputssalas"
-import Horarios from "../../../components/RoomPage/ReservationContainer/horarios"
-import createRoom from "../../../services/room/createRoom";
-import getSchedules from "../../../services/schedule/getSchedules"
-import createRoomHasSchedule from "../../../services/roomHasSchedule/createRoomHasSchedule"
+import editRoom from "../../../services/room/editRoom";
+import getOneRoom from "../../../services/room/getOneRoom";
 import ConfirmModal from "../../../components/ConfirmModal"
 import useUser from "../../../hooks/useUser"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from 'next/router'
 
-export default function CadastroSalas() {
+
+export default function EditarSala() {
+    const { user } = useUser();
     const toast = useToast();
     const router = useRouter();
+    const [idValue, setIdValue] = useState(null);
     const [isOpenModal, setIsOpenModal] = useState('');
-    const { user } = useUser();
     const [idInstituteValue, setIdInstituteValue] = useState('');   
     const [numberValue, setNumberValue] = useState(''); 
 
-    async function cadastrarSalas(){
-        const resCreateRoom = await createRoom({
+    useEffect(()=>{ setIdValue(router.query.id); }, [])
+
+    useEffect(()=>{
+        if (!idValue || !user.token) return;
+        (async function(){
+            const response = await getOneRoom({
+                token:user?.token,
+                id: idValue
+            })
+            if(response){
+                if(response.status == "success") {
+                    setIdInstituteValue(response.data.fk_id_institute);
+                    setNumberValue(response.data.number);
+                }
+            }
+        })()
+    }, [idValue, user])
+
+    async function editarSala(){
+        const response = await editRoom({
             token:user?.token,
+            id: idValue,
             id_institute: idInstituteValue,
             number:numberValue
         })
-        if(resCreateRoom && resCreateRoom?.status=='success'){
-            const resSchedules = await getSchedules({token:user?.token});
-            if(resSchedules && resSchedules?.status == "success"){
-              
-                await resSchedules.data.map(
-                    async (schedule)=>{
-                        await createRoomHasSchedule({
-                            token: user?.token,
-                            idRoom: resCreateRoom.data.id,
-                            idSchedule: schedule.id
-                        })
-                    }
-                )
-                toast(
-                    {
-                        title: resCreateRoom.message,
-                        status: resCreateRoom.status ,
-                        duration: 3000,
-                        isClosable: true,
-                        position: "top"
-                    }
-                )
-                setIsOpenModal(false);
+        if(response){
+            setIsOpenModal(false)
+            toast(
+                {
+                    title: response.message,
+                    status: response.status ,
+                    duration: 3000,
+                    isClosable: true,
+                    position: "top"
+                }
+            )
+            if(response.status == "success") {
                 setIdInstituteValue('');
                 setNumberValue('')
                 router.push('/admin/salas');
@@ -63,7 +70,7 @@ export default function CadastroSalas() {
         <Box bgColor={"#EEEDEA"} width={'100%'} height={'100vh'}>
           <Header/>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
-            <Retornar titulo={'Cadastro de Salas'} direction={'salas'}/>
+            <Retornar titulo={'Salas'} direction={'salas'}/>
           </Box>
           <Box p={4} display = {"flex"} alignItems={"center"} justifyContent = {"center"}>
             <Inputs
@@ -82,11 +89,11 @@ export default function CadastroSalas() {
                     _hover={{}}
                     color="white"
                     >
-                        <Text p={100}>Cadastrar</Text>
+                        <Text p={100}>Alterar</Text>
                     </Button>
                 </Flex>
           </Box>   
-          <ConfirmModal message="Deseja mesmo cadastrar essa sala?" confirmAction={cadastrarSalas} isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>       
+          <ConfirmModal message="Deseja mesmo alterar essa sala?" confirmAction={editarSala} isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>       
         </Box>  
     )
   }
