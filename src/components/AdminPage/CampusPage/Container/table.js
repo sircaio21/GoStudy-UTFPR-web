@@ -85,13 +85,13 @@ export default function ContainerCampus({campusList, setInstitutes}){
                             <Td>{campus.closingTime}</Td>
                             <td>
                                 <Button 
-                                       onClick={()=>router.push(`/admin/campus/editar?id=${campus.id}`)} 
+                                        onClick={()=>router.push(`/admin/campus/editar?id=${campus.id}`)} 
                                         variant='ghost' colorScheme='none' border={'Background'} 
                                         alignContent={'center'} justifyContent={'center'}  
                                         marginRight={1} padding={0}>{<BsFillPencilFill />}</Button>
                                 <Button 
                                         onClick={()=>{setDeleteIndex(campus.id), setIsOpenModal(true)}} 
-                                        variant='ghost' 
+                                        variant='ghost' isDisabled={campus.id === user.fk_id_institute}
                                         colorScheme='none' padding={-1}>{<BsFillTrashFill/>}</Button>
                             </td>
                         </Tr> 
